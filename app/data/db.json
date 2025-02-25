@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    { "title": "Ux Designer", "id": 1, "details": "lorem" },
+    { "title": "Web Developer", "id": 2, "details": "lorem" },
+    { "title": "Backend Engineer", "id": 1, "details": "lorem" }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Welcome to the new blog",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "tags": ["webdev", "coding", "news"]
+    },
+    {
+      "id": 2,
+      "title": "top 5 CSS tips",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "tags": ["webdev", "coding", "news"]
+    }
+  ]
+}
