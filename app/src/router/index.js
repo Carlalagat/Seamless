@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import {
-  // HomeView,
+  HomeView,
   SignupView,
   LoginView,
   AdminView,
@@ -10,9 +10,9 @@ import {
 import { useAuthStore } from "../store";
 
 const routes = [
-  { path: "/", redirect: "/login" },
-  { path: "/signup", name: "signup", component: SignupView },
+  { path: "/", name: "home", component: HomeView },
   { path: "/login", name: "login", component: LoginView },
+  { path: "/signup", name: "signup", component: SignupView },
   { path: "/admin-dashboard", name: "admin", component: AdminView },
   { path: "/client-dashboard", name: "client", component: ClientView },
   { path: "/tailor-dashboard", name: "tailor", component: TailorView },
@@ -26,7 +26,7 @@ const router = createRouter({
 // Global navigation guard: if the route is not public and user is not logged in, redirect to login.
 router.beforeEach(async (to) => {
   // Define public pages that do not require authentication.
-  const publicPages = ["/login", "/signup"];
+  const publicPages = ["/","/login", "/signup", "/about", "/contact", "/find-garments", "/find-tailors"];
   const authRequired = !publicPages.includes(to.path);
   const auth = useAuthStore();
 
