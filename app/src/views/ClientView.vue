@@ -1,11 +1,11 @@
 <template>
   <div>
-    <LoginEmail />
+    <Dashboard />
   </div>
 </template>
 
 <script setup>
-import LoginEmail from "@/components/auth/LoginEmail.vue";
+import Dashboard from "@/components/client/Dashboard.vue";
 </script>
 
 <style lang="scss" scoped></style>
