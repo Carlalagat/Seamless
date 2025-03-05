@@ -6,7 +6,8 @@
         <div>
           <!--<img src="@/assets/logo.png" alt="SeamLess Logo" class="h-12 mb-4" />-->
           <p class="text-sm">
-            Making custom tailoring accessible to everyone through technology and craftsmanship.
+            Making custom tailoring accessible to everyone through technology
+            and craftsmanship.
           </p>
         </div>
 
@@ -14,10 +15,18 @@
         <div>
           <h3 class="text-white font-semibold mb-4">Quick Links</h3>
           <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-white transition">About Us</a></li>
-            <li><a href="#" class="hover:text-white transition">Find Garments</a></li>
-            <li><a href="#" class="hover:text-white transition">Find Tailors</a></li>
-            <li><a href="#" class="hover:text-white transition">How It Works</a></li>
+            <li>
+              <a href="/about" class="hover:text-white transition">About Us</a>
+            </li>
+            <li>
+              <a href="/find-garments" class="hover:text-white transition">Find Garments</a>
+            </li>
+            <li>
+              <a href="/find-tailors" class="hover:text-white transition">Find Tailors</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition">How It Works</a>
+            </li>
           </ul>
         </div>
 
@@ -41,7 +50,9 @@
       </div>
 
       <!-- Copyright & Social Media -->
-      <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-sm border-t border-gray-700 pt-4">
+      <div
+        class="mt-8 flex flex-col md:flex-row items-center justify-between text-sm border-t border-gray-700 pt-4"
+      >
         <p>© 2025 SeamLess. All rights reserved.</p>
         <div class="flex space-x-4 mt-4 md:mt-0">
           <a href="#" class="text-gray-400 hover:text-white transition">

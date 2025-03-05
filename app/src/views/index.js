@@ -9,4 +9,15 @@ import AdminView from "./admin/AdminView.vue";
 import ClientView from "./client/ClientView.vue";
 import TailorView from "./tailor/TailorView.vue";
 
-export { HomeView, AboutView, FindGarmentView, FindTailorView, ContactView, RegisterView, LoginView, AdminView, ClientView, TailorView };
+export {
+  HomeView,
+  AboutView,
+  FindGarmentView,
+  FindTailorView,
+  ContactView,
+  RegisterView,
+  LoginView,
+  AdminView,
+  ClientView,
+  TailorView,
+};

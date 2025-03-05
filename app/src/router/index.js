@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import {
   HomeView,
-  SignupView,
+  RegisterView,
   LoginView,
   AdminView,
   ClientView,
@@ -15,15 +15,23 @@ import { useAuthStore } from "../store";
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
-  { path: "/about", name: "home", component: AboutView },
-  { path: "/find-garments", name: "home", component: FindGarmentView },
-  { path: "/find-tailors", name: "home", component: FindTailorView },
-  { path: "/contact", name: "home", component: ContactView },
+  { path: "/about", name: "about", component: AboutView },
+  { path: "/find-garments", name: "find-garments", component: FindGarmentView },
+  { path: "/find-tailors", name: "find-tailors", component: FindTailorView },
+  { path: "/contact", name: "contact", component: ContactView },
   { path: "/login", name: "login", component: LoginView },
-  { path: "/signup", name: "signup", component: SignupView },
-  { path: "/admin-dashboard", name: "admin", component: AdminView },
-  { path: "/client-dashboard", name: "client", component: ClientView },
-  { path: "/tailor-dashboard", name: "tailor", component: TailorView },
+  { path: "/register", name: "register", component: RegisterView },
+  { path: "/admin-dashboard", name: "admin-dashboard", component: AdminView },
+  {
+    path: "/client-dashboard",
+    name: "client-dashboard",
+    component: ClientView,
+  },
+  {
+    path: "/tailor-dashboard",
+    name: "tailor-dashboard",
+    component: TailorView,
+  },
 ];
 
 const router = createRouter({
@@ -37,7 +45,7 @@ router.beforeEach(async (to) => {
   const publicPages = [
     "/",
     "/login",
-    "/signup",
+    "/register",
     "/about",
     "/contact",
     "/find-garments",
