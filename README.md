@@ -8,6 +8,20 @@
   <img src="https://img.shields.io/badge/License-MIT-purple" alt="License: MIT">
 </p>
 
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-project-structure">Project Structure</a> •
+  <a href="#-component-architecture">Component Architecture</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-development-guide">Development Guide</a>
+</p>
+
+## 🌟 Stargazers
+[![Stargazers](https://reporoster.com/stars/Carlalagat/Seamless)](https://github.com/Carlalagat/Seamless/stargazers)
+
+## 📊 Contributions Dashboard
+![Alt](https://repobeats.axiom.co/api/embed/87eeeb98a7656791ebceae8a59fd693eccd252ee.svg "Repobeats analytics image")
+
 ## 🌟 Project Overview
 
 Seamless is a comprehensive tailoring platform designed to bridge the gap between clients and professional tailors. Leveraging Vue.js 3 and modern web technologies, the platform offers a robust solution for custom clothing orders and management.
@@ -42,22 +56,63 @@ Seamless is a comprehensive tailoring platform designed to bridge the gap betwee
 ```
 seamless/
 ├── app/                      # Vue application root
-│   ├── public/               # Public assets
+│   ├── public/              # Public assets
 │   │   ├── index.html
 │   │   └── favicon.ico
 │   │
 │   ├── src/
-│   │   ├── assets/           # Static assets
-│   │   ├── components/       # Reusable Vue components
-│   │   ├── helpers/          # Utility functions
-│   │   ├── pages/            # Page-specific components
-│   │   ├── router/           # Vue routing configuration
-│   │   ├── store/            # State management
-│   │   ├── views/            # Top-level view components
-│   │   ├── App.vue           # Root Vue component
-│   │   └── main.js           # Application entry point
+│   │   ├── assets/
+│   │   │   └── styles/
+│   │   │       └── tailwind.css
+│   │   │
+│   │   ├── components/
+│   │   │   ├── admin/
+│   │   │   │   └── Dashboard.vue
+│   │   │   ├── client/
+│   │   │   │   └── Dashboard.vue
+│   │   │   ├── common/
+│   │   │   │   └── layout/
+│   │   │   │       ├── Header.vue
+│   │   │   │       └── Footer.vue
+│   │   │   └── tailor/
+│   │   │       └── Dashboard.vue
+│   │   │
+│   │   ├── helpers/
+│   │   │   ├── fake-backend.js
+│   │   │   └── fetch-wrapper.js
+│   │   │
+│   │   ├── pages/
+│   │   │   └── public/
+│   │   │       ├── FindGarmentPage.vue
+│   │   │       └── FindTailorPage.vue
+│   │   │
+│   │   ├── router/
+│   │   │   └── index.js
+│   │   │
+│   │   ├── store/
+│   │   │   ├── modules/
+│   │   │   │   ├── auth.store.js
+│   │   │   │   └── users.store.js
+│   │   │   └── index.js
+│   │   │
+│   │   ├── views/
+│   │   │   ├── admin/
+│   │   │   │   └── AdminView.vue
+│   │   │   ├── auth/
+│   │   │   │   ├── LoginView.vue
+│   │   │   │   └── RegisterView.vue
+│   │   │   └── public/
+│   │   │       ├── AboutView.vue
+│   │   │       ├── ContactView.vue
+│   │   │       ├── FindGarmentView.vue
+│   │   │       ├── FindTailorView.vue
+│   │   │       └── HomeView.vue
+│   │   │
+│   │   ├── App.vue
+│   │   └── main.js
 │   │
 │   └── package.json
+│
 └── README.md
 ```
 
