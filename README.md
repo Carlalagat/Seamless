@@ -16,6 +16,12 @@
   <a href="#-development-guide">Development Guide</a>
 </p>
 
+## 🌟 Stargazers
+[![Stargazers](https://reporoster.com/stars/Carlalagat/Seamless)](https://github.com/Carlalagat/Seamless/stargazers)
+
+## 📊 Contributions Dashboard
+![Alt](https://repobeats.axiom.co/api/embed/87eeeb98a7656791ebceae8a59fd693eccd252ee.svg "Repobeats analytics image")
+
 ## 📚 Table of Contents
 
 1. [Project Overview](#-project-overview)
