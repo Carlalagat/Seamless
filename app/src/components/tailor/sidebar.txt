@@ -1,0 +1,71 @@
+<template>
+  <aside class="w-64 bg-white opacity-75 min-h-screen p-6 shadow-lg">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="@/assets/logo.png" alt="SeamLess" class="w-40 center" />
+      <!-- <h1 class="text-xl font-semibold text-purple-700">SeamLess</h1> -->
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="mt-8">
+      <ul class="space-y-8">
+        <li>
+          <router-link to="/dashboard" class="sidebar-link active">
+            <font-awesome-icon :icon="['fas', 'chart-line']" /> Dashboard
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/orders" class="sidebar-link">
+            <font-awesome-icon :icon="['fas', 'box']" /> Orders <span class="badge">32</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/measurements" class="sidebar-link">
+            <font-awesome-icon :icon="['fas', 'ruler']" /> Measurements
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/marketing" class="sidebar-link">
+            <font-awesome-icon :icon="['fas', 'bullhorn']" /> Marketing
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Notifications -->
+    <div class="mt-8">
+      <router-link to="/notifications" class="sidebar-link">
+        <font-awesome-icon :icon="['fas', 'bell']" /> Notifications
+        <span class="badge">10</span>
+      </router-link>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="mt-12 border-t pt-4">
+      <div class="flex items-center space-x-3">
+        <img src="https://fakeimg.pl/40x40" class="rounded-full w-10 h-10" alt="Tailor" />
+        <div>
+          <h4 class="font-semibold">Tailor</h4>
+          <p class="text-xs text-gray-500">kinya@nakurutailors.co.ke</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout -->
+    <button class="mt-6 w-full bg-red-500 text-white py-2 rounded-xl">
+      <font-awesome-icon :icon="['fas', 'sign-out-alt']" /> Logout
+    </button>
+  </aside>
+</template>
+
+<style scoped>
+.sidebar-link {
+  @apply flex items-center space-x-2 text-gray-700 hover:text-purple-700 transition;
+}
+.active {
+  @apply text-purple-700 font-semibold;
+}
+.badge {
+  @apply bg-purple-600 text-white text-xs px-2 py-1 rounded-full ml-2;
+}
+</style>
