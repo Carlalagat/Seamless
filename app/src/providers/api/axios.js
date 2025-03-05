@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401) {
       console.log("Unauthorized access. Logging out...");
       /** Perform a dynamic import of store to avoid circular dependency */
-      const { useAuthStore } = await import("../../store/auth.store");
+      const { useAuthStore } = await import("../../store/modules/auth.store");
       const authStore = useAuthStore();
       /** Perform logout or redirect to the login page */
       authStore.logout();

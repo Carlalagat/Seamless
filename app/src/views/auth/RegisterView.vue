@@ -1,11 +1,11 @@
 <template>
   <div>
-    <LoginEmail />
+    <RegisterPage />
   </div>
 </template>
 
 <script setup>
-import LoginEmail from "@/components/auth/LoginEmail.vue";
+import RegisterPage from "@/pages/auth/RegisterPage.vue";
 </script>
 
 <style lang="scss" scoped></style>

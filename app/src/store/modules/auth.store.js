@@ -1,9 +1,9 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { useLocalStorage } from "@vueuse/core";
-import { fetchWrapper } from "../helpers";
-import { post, get } from "../providers/api/main";
-import router from "../router";
+import { fetchWrapper } from "../../helpers";
+import { post, get } from "../../providers/api/main";
+import router from "../../router";
 
 /**Import API URL from .env */
 const baseUrl = `${import.meta.env.VITE_API_URL}`;

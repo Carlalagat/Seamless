@@ -10,8 +10,8 @@
 
 <script setup>
 import { RouterView } from "vue-router";
-import Header from "./components/common/Header.vue";
-import Footer from "./components/common/Footer.vue";
+import Header from "./components/common/layout/Header.vue";
+import Footer from "./components/common/layout/Footer.vue";
 </script>
 
 <style scoped></style>

@@ -6,11 +6,19 @@ import {
   AdminView,
   ClientView,
   TailorView,
+  AboutView,
+  FindGarmentView,
+  FindTailorView,
+  ContactView,
 } from "../views";
 import { useAuthStore } from "../store";
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
+  { path: "/about", name: "home", component: AboutView },
+  { path: "/find-garments", name: "home", component: FindGarmentView },
+  { path: "/find-tailors", name: "home", component: FindTailorView },
+  { path: "/contact", name: "home", component: ContactView },
   { path: "/login", name: "login", component: LoginView },
   { path: "/signup", name: "signup", component: SignupView },
   { path: "/admin-dashboard", name: "admin", component: AdminView },
@@ -26,7 +34,15 @@ const router = createRouter({
 // Global navigation guard: if the route is not public and user is not logged in, redirect to login.
 router.beforeEach(async (to) => {
   // Define public pages that do not require authentication.
-  const publicPages = ["/","/login", "/signup", "/about", "/contact", "/find-garments", "/find-tailors"];
+  const publicPages = [
+    "/",
+    "/login",
+    "/signup",
+    "/about",
+    "/contact",
+    "/find-garments",
+    "/find-tailors",
+  ];
   const authRequired = !publicPages.includes(to.path);
   const auth = useAuthStore();
 

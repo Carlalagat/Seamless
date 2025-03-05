@@ -1,4 +1,4 @@
-import { useAuthStore } from "./auth.store";
-import { useUsersStore } from "./users.store";
+import { useAuthStore } from "./modules/auth.store";
+import { useUsersStore } from "./modules/users.store";
 
 export { useAuthStore, useUsersStore };
