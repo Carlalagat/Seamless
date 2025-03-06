@@ -42,8 +42,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { Chart, registerables } from "chart.js";
-import Sidebar from "@/components/tailor/Sidebar.vue";
-import NavBar from "@/components/tailor/NavBar.vue";
 
 Chart.register(...registerables);
 
