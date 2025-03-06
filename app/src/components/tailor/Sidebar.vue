@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- Sidebar Overlay (Mobile) -->
-    <div v-if="isOpen" class="fixed inset-0 bg-black opacity-50 md:hidden" @click="toggleSidebar"></div>
+    <div
+      v-if="isOpen"
+      class="fixed inset-0 bg-black opacity-50 md:hidden"
+      @click="toggleSidebar"
+    ></div>
 
     <!-- Sidebar -->
     <aside
@@ -11,13 +15,20 @@
       ]"
     >
       <!-- Close Button (Mobile) -->
-      <button @click="toggleSidebar" class="absolute top-4 right-4 md:hidden text-gray-600">
+      <button
+        @click="toggleSidebar"
+        class="absolute top-4 right-4 md:hidden text-gray-600"
+      >
         <font-awesome-icon icon="times" class="text-2xl" />
       </button>
 
       <!-- Logo -->
       <div class="flex items-center space-x-2">
-        <img src="@/assets/logo.png" alt="SeamLess" class="w-32 md:w-40 mx-auto" />
+        <img
+          src="@/assets/logo.png"
+          alt="SeamLess"
+          class="w-32 md:w-40 mx-auto"
+        />
       </div>
 
       <!-- Navigation Menu -->
@@ -30,7 +41,8 @@
           </li>
           <li>
             <router-link to="/orders" class="sidebar-link">
-              <font-awesome-icon icon="box" /> Orders <span class="badge">32</span>
+              <font-awesome-icon icon="box" /> Orders
+              <span class="badge">32</span>
             </router-link>
           </li>
           <li>
@@ -57,7 +69,11 @@
       <!-- Profile Section -->
       <div class="mt-12 border-t pt-4">
         <div class="flex items-center space-x-3">
-          <img src="https://fakeimg.pl/40x40" class="rounded-full w-10 h-10" alt="Tailor" />
+          <img
+            src="https://fakeimg.pl/40x40"
+            class="rounded-full w-10 h-10"
+            alt="Tailor"
+          />
           <div class="flex flex-col">
             <h4 class="font-semibold">Tailor</h4>
             <p class="text-xs text-gray-500">kinya@nakurutailors.co.ke</p>
@@ -66,8 +82,14 @@
       </div>
 
       <!-- Logout -->
-      <button class="mt-6 w-full bg-red-500 py-2 rounded-xl hover:bg-red-400" id="logout">
-        <router-link to="/login" class="font-medium text-white hover:text-gray-300">
+      <button
+        class="mt-6 w-full bg-red-500 py-2 rounded-xl hover:bg-red-400"
+        id="logout"
+      >
+        <router-link
+          to="/login"
+          class="font-medium text-white hover:text-gray-300"
+        >
           <font-awesome-icon icon="sign-out-alt" /> Logout
         </router-link>
       </button>

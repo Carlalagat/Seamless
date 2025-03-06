@@ -13,23 +13,37 @@
       <!-- Dashboard Content -->
       <div class="p-4 sm:p-6">
         <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Dashboard</h1>
-        <p class="text-sm sm:text-base text-gray-500">Overview of your store’s performance</p>
+        <p class="text-sm sm:text-base text-gray-500">
+          Overview of your store’s performance
+        </p>
 
         <!-- Stats Overview Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
-          <div v-for="(stat, index) in stats" :key="index" 
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6"
+        >
+          <div
+            v-for="(stat, index) in stats"
+            :key="index"
             class="bg-white p-4 sm:p-6 rounded-xl shadow-md border-l-4 transition-transform transform hover:scale-105"
             :class="stat.borderColor"
           >
-            <h3 class="text-lg sm:text-xl font-semibold text-gray-700">{{ stat.title }}</h3>
-            <p class="text-2xl sm:text-3xl font-bold" :class="stat.textColor">{{ stat.value }}</p>
-            <p class="text-xs sm:text-sm text-gray-500 mt-2">{{ stat.percentage }} from last month</p>
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-700">
+              {{ stat.title }}
+            </h3>
+            <p class="text-2xl sm:text-3xl font-bold" :class="stat.textColor">
+              {{ stat.value }}
+            </p>
+            <p class="text-xs sm:text-sm text-gray-500 mt-2">
+              {{ stat.percentage }} from last month
+            </p>
           </div>
         </div>
 
         <!-- Stats Graph (Fully Responsive) -->
         <div class="mt-8 bg-white p-4 sm:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">Sales & Revenue</h2>
+          <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">
+            Sales & Revenue
+          </h2>
           <div class="w-full h-52 sm:h-64">
             <canvas ref="chartCanvas"></canvas>
           </div>
@@ -49,10 +63,34 @@ const chartCanvas = ref(null);
 
 // Sample stats data
 const stats = ref([
-  { title: "Total Sales", value: "$24,560", percentage: "+12%", textColor: "text-purple-600", borderColor: "border-purple-500" },
-  { title: "Orders", value: "320", percentage: "+8%", textColor: "text-blue-600", borderColor: "border-blue-500" },
-  { title: "New Customers", value: "58", percentage: "+5%", textColor: "text-green-600", borderColor: "border-green-500" },
-  { title: "Revenue", value: "$9,820", percentage: "+18%", textColor: "text-yellow-600", borderColor: "border-yellow-500" },
+  {
+    title: "Total Sales",
+    value: "$24,560",
+    percentage: "+12%",
+    textColor: "text-purple-600",
+    borderColor: "border-purple-500",
+  },
+  {
+    title: "Orders",
+    value: "320",
+    percentage: "+8%",
+    textColor: "text-blue-600",
+    borderColor: "border-blue-500",
+  },
+  {
+    title: "New Customers",
+    value: "58",
+    percentage: "+5%",
+    textColor: "text-green-600",
+    borderColor: "border-green-500",
+  },
+  {
+    title: "Revenue",
+    value: "$9,820",
+    percentage: "+18%",
+    textColor: "text-yellow-600",
+    borderColor: "border-yellow-500",
+  },
 ]);
 
 onMounted(() => {
