@@ -1,4 +1,5 @@
 <template>
+  
   <nav class="flex justify-between items-center p-6 shadow-md bg-white text-lg font-bold font-sans relative">
     <!-- Logo Section -->
     <div class="flex items-center space-x-2">
