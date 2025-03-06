@@ -5,6 +5,8 @@ import App from "./App.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faBars, faTimes, faChartLine, faBox, faRuler, faBullhorn, faBell, faUser, faSignOutAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
+// for font awesome to work install "npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome" in the terminal
+
 
 /**styling */
 // import "./style.css";
