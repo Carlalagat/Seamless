@@ -7,17 +7,21 @@
       >
     </div>
     <ul class="hidden md:flex space-x-6 text-gray-700">
-      <RouterLink to="/" class="hover:text-purple-600">Home</RouterLink>
+      <RouterLink to="/" class="hover:text-purple-600" active-class="text-purple-600" exact>Home</RouterLink>
       <RouterLink to="/about" class="hover:text-purple-600"
+      active-class="text-purple-600"
         >About Us</RouterLink
       >
       <RouterLink to="/find-garments" class="hover:text-purple-600"
+      active-class="text-purple-600"
         >Find Garments</RouterLink
       >
       <RouterLink to="/find-tailors" class="hover:text-purple-600"
+      active-class="text-purple-600"
         >Find Tailors</RouterLink
       >
       <RouterLink to="/contact" class="hover:text-purple-600"
+      active-class="text-purple-600"
         >Contact Us</RouterLink
       >
     </ul>
