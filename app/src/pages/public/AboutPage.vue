@@ -14,15 +14,15 @@
         
         <div class="flex flex-wrap justify-between mt-6">
           <div class="text-center w-1/3">
-            <p class="text-2xl font-bold text-indigo-600">200+</p>
+            <p class="text-2xl font-bold text-purple-500">200+</p>
             <p class="text-gray-700">Professional Tailors</p>
           </div>
           <div class="text-center w-1/3">
-            <p class="text-2xl font-bold text-indigo-600">50K+</p>
+            <p class="text-2xl font-bold text-purple-500">50K+</p>
             <p class="text-gray-700">Happy Customers</p>
           </div>
           <div class="text-center w-1/3">
-            <p class="text-2xl font-bold text-indigo-600">98%</p>
+            <p class="text-2xl font-bold text-purple-500">98%</p>
             <p class="text-gray-700">Satisfaction Rate</p>
           </div>
         </div>
