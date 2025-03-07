@@ -1,11 +1,12 @@
 <template>
   <div>
-    <Dashboard />
+    <DashboardPage />
   </div>
 </template>
 
 <script setup>
-import Dashboard from "@/components/client/Dashboard.vue";
+import DashboardPage from "@/pages/client/DashboardPage.vue";
+
 </script>
 
 <style lang="scss" scoped></style>
