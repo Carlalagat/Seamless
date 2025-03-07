@@ -1,18 +1,19 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import { useLocalStorage } from "@vueuse/core";
-import { fetchWrapper } from "../../helpers";
 import { post, get } from "../../providers/api/main";
 import router from "../../router";
 
-/**Import API URL from .env */
+/** Import API URL from .env */
 const baseUrl = `${import.meta.env.VITE_API_URL}`;
 const mode = `${import.meta.env.VITE_MODE}`;
 
 /** Auth store */
 export const useAuthStore = defineStore("auth", () => {
+  /** Storing user and tokens using useLocalStorage for persistence. */
   const user = ref(useLocalStorage("user", null));
   const access_token = ref(useLocalStorage("x-token", null));
+  const refreshToken = ref(useLocalStorage("refresh-token", null));
   const returnUrl = ref(null);
   const error = ref(null);
   let login;
@@ -22,11 +23,7 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       const response = await post("api/auth/signup", formData);
       console.log("Signup successful:", response.data);
-      // Option 1: Auto-login after signup:
-      // user.value = response.data.user;
-      // access_token.value = response.data.token;
-      // Redirect based on role if auto-login is desired.
-      // Option 2: Redirect to login page after signup:
+      /** Redirect to login page after signup: */
       router.push("/login");
     } catch (err) {
       console.error("Signup error:", err);
@@ -37,45 +34,19 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  /** Login method for local instance */
-  async function login_local(formData) {
-    const username = formData.email;
-    const password = formData.password;
-    console.log("This is the formData in store", { username, password });
-    const fetchedUser = await fetchWrapper
-      .post(`${baseUrl}/login`, { username, password })
-      .catch((err) => {
-        console.log(err);
-        error.value = err.response ? err.response.data.message : err.message;
-      });
-    console.log("Fetched user:", fetchedUser);
-    // Update state: store user as an object
-    user.value = fetchedUser;
-    // Redirect based on role if available
-    if (fetchedUser && fetchedUser.role) {
-      if (fetchedUser.role === "ADMIN") {
-        router.push("/admin-dashboard");
-      } else if (fetchedUser.role === "CLIENT") {
-        router.push("/client-dashboard");
-      } else if (fetchedUser.role === "TAILOR") {
-        router.push("/tailor-dashboard");
-      } else {
-        router.push(returnUrl.value || "/");
-      }
-    } else {
-      router.push(returnUrl.value || "/");
-    }
-  }
-
   /** Login method for remote instance */
   async function login_remote(credentials) {
     try {
       const response = await post("api/auth/signin", credentials);
       console.log("Remote login response:", response);
-      /** Store the user */
+      /** Store the user object */
       user.value = response.data.user;
       /** Store the access token */
       access_token.value = response.data.token;
+      /** Store the refresh token, if provided */
+      if (response.data.refreshToken) {
+        refreshToken.value = response.data.refreshToken;
+      }
       error.value = null;
       /** Redirect based on role if available */
       if (user.value && user.value.role) {
@@ -115,15 +86,26 @@ export const useAuthStore = defineStore("auth", () => {
   function logout() {
     user.value = null;
     access_token.value = null;
+    refreshToken.value = null;
     router.push("/login");
   }
 
   /** Identify the login method */
-  if (mode === "local") {
-    login = login_local;
-  } else if (mode === "remote") {
+  if (mode === "remote") {
     login = login_remote;
+  } else {
+    login = login_local;
   }
 
-  return { user, returnUrl, error, test, login, signup, logout };
+  return {
+    user,
+    access_token,
+    refreshToken,
+    returnUrl,
+    error,
+    test,
+    login,
+    signup,
+    logout,
+  };
 });

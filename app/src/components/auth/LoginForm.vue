@@ -27,6 +27,7 @@
             }}</span>
           </div>
         </div>
+
         <!-- Password Input -->
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700"
@@ -50,6 +51,7 @@
             }}</span>
           </div>
         </div>
+
         <!-- Submit Button -->
         <div>
           <button
@@ -60,14 +62,27 @@
           </button>
         </div>
       </form>
+
       <!-- Loading Indicator -->
       <div v-if="loading" class="mt-4 text-center text-gray-700">
         Logging in...
       </div>
+
       <!-- Error Message -->
       <div v-if="error" class="mt-4 text-center text-red-500">
         {{ error }}
       </div>
+
+      <!-- Forgot Password Link -->
+      <div class="mt-4 text-center">
+        <router-link
+          to="/forgot-password"
+          class="text-sm text-indigo-600 hover:text-indigo-500"
+        >
+          Forgot your password?
+        </router-link>
+      </div>
+
       <!-- Link to Signup -->
       <div class="mt-4 text-center">
         <p class="text-sm text-gray-600">
