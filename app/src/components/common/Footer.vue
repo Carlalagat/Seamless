@@ -15,16 +15,10 @@
           <ul class="space-y-2 text-sm">
 
             <li>
-              <RouterLink to="/" class="hover:text-white transition">Home</RouterLink>
-            </li>
-            <li>
               <RouterLink to="/about" class="hover:text-white transition">About Us</RouterLink>
             </li>
             <li>
               <RouterLink to="/find-garments" class="hover:text-white transition">Find Garments</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/how-it-works" class="hover:text-white transition">How It Works</RouterLink>
             </li>
             <li>
               <RouterLink to="/find-tailors" class="hover:text-white transition">Find Tailors</RouterLink>
