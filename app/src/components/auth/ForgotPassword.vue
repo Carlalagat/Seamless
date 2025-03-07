@@ -12,12 +12,12 @@
             v-model="email"
             type="email"
             required
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
           />
         </div>
         <button
           type="submit"
-          class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+          class="w-full py-2 px-4 bg-purple-600 text-white rounded-md hover:bg-purple-700"
         >
           Send Reset Link
         </button>
