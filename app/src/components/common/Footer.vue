@@ -19,10 +19,14 @@
               <a href="/about" class="hover:text-white transition">About Us</a>
             </li>
             <li>
-              <a href="/find-garments" class="hover:text-white transition">Find Garments</a>
+              <a href="/find-garments" class="hover:text-white transition"
+                >Find Garments</a
+              >
             </li>
             <li>
-              <a href="/find-tailors" class="hover:text-white transition">Find Tailors</a>
+              <a href="/find-tailors" class="hover:text-white transition"
+                >Find Tailors</a
+              >
             </li>
             <li>
               <a href="#" class="hover:text-white transition">How It Works</a>
