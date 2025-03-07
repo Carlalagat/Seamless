@@ -8,8 +8,12 @@
             self-measurements and personalized service.
           </p>
           <div class="mt-6 flex space-x-4">
+            <router-link to="/login">
             <button class="bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700">Get Started</button>
+            </router-link>
+            <router-link to = "/find-garments">
             <button class="border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-lg hover:bg-purple-100">Browse Garments</button>
+            </router-link>
           </div>
         </div>
         

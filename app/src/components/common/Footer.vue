@@ -11,6 +11,7 @@
          </p>
        </div>
 
+<<<<<<< HEAD
        
        <div>
          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
@@ -22,6 +23,30 @@
     <li><RouterLink to ="/" class="hover:text-white transition">How It Works</RouterLink></li>
     <li><RouterLink to ="/" class="hover:text-white transition">Find Tailors</RouterLink></li>
     <li><RouterLink to ="/" class="hover:text-white transition">Contact Us</RouterLink></li>
+=======
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/about" class="hover:text-white transition">About Us</a>
+            </li>
+            <li>
+              <a href="/find-garments" class="hover:text-white transition"
+                >Find Garments</a
+              >
+            </li>
+            <li>
+              <a href="/find-tailors" class="hover:text-white transition"
+                >Find Tailors</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition">How It Works</a>
+            </li>
+          </ul>
+        </div>
+>>>>>>> 84fdc1b398dd6ed0045ac6aaafd3151273f951ed
 
          </ul>
        </div>
