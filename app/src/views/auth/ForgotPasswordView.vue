@@ -1,11 +1,11 @@
 <template>
     <div>
-      <ResetPassword />
+      <ForgotPasswordPage />
     </div>
   </template>
   
   <script setup>
-  import ResetPassword from "@/components/auth/ResetPassword.vue";
+  import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage.vue";
   </script>
   
   <style lang="scss" scoped></style>

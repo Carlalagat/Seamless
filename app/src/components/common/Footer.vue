@@ -1,36 +1,41 @@
 <template>
-  <footer class="bg-gray-900 text-gray-300 py-10">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <footer class="bg-slate-700 text-gray-300 py-10">
     <div class="container mx-auto px-8 md:px-16 lg:px-32">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- Logo & About Section -->
+
         <div>
-          <!--<img src="@/assets/logo.png" alt="SeamLess Logo" class="h-12 mb-4" />-->
+          <img :src="logo" alt="SeamLess Logo" class="h-12 mb-4" />
           <p class="text-sm">
-            Making custom tailoring accessible to everyone through technology
-            and craftsmanship.
+            Making custom tailoring accessible to everyone through technology and craftsmanship.
           </p>
         </div>
-
-        <!-- Quick Links -->
         <div>
           <h3 class="text-white font-semibold mb-4">Quick Links</h3>
           <ul class="space-y-2 text-sm">
+
             <li>
-              <a href="/about" class="hover:text-white transition">About Us</a>
+              <RouterLink to="/" class="hover:text-white transition">Home</RouterLink>
             </li>
             <li>
-              <a href="/find-garments" class="hover:text-white transition">Find Garments</a>
+              <RouterLink to="/" class="hover:text-white transition">About Us</RouterLink>
             </li>
             <li>
-              <a href="/find-tailors" class="hover:text-white transition">Find Tailors</a>
+              <RouterLink to="/" class="hover:text-white transition">Find Garments</RouterLink>
             </li>
             <li>
-              <a href="#" class="hover:text-white transition">How It Works</a>
+              <RouterLink to="/" class="hover:text-white transition">How It Works</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/" class="hover:text-white transition">Find Tailors</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/" class="hover:text-white transition">Contact Us</RouterLink>
             </li>
           </ul>
         </div>
 
-        <!-- Contact -->
+
         <div>
           <h3 class="text-white font-semibold mb-4">Contact</h3>
           <p class="text-sm">Gibcon House, 4th Floor</p>
@@ -39,7 +44,7 @@
           <p class="text-sm">(+254)-714-856-790</p>
         </div>
 
-        <!-- Legal -->
+
         <div>
           <h3 class="text-white font-semibold mb-4">Legal</h3>
           <ul class="space-y-2 text-sm">
@@ -49,10 +54,9 @@
         </div>
       </div>
 
-      <!-- Copyright & Social Media -->
-      <div
-        class="mt-8 flex flex-col md:flex-row items-center justify-between text-sm border-t border-gray-700 pt-4"
-      >
+      <hr class="border-white-700 my-6" />
+
+      <div class="mt-8 flex flex-col md:flex-row items-center justify-between text-sm border-t border-gray-700 pt-4">
         <p>© 2025 SeamLess. All rights reserved.</p>
         <div class="flex space-x-4 mt-4 md:mt-0">
           <a href="#" class="text-gray-400 hover:text-white transition">
@@ -73,6 +77,7 @@
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import logo from '@/assets/images/Logo.png';</script>
 
 <style lang="scss" scoped></style>

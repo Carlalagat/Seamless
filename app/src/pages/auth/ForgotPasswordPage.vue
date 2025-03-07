@@ -1,11 +1,11 @@
 <template>
     <div>
-      <ResetPassword />
+      <ForgotPassword />
     </div>
   </template>
   
   <script setup>
-  import ResetPassword from "@/components/auth/ResetPassword.vue";
+  import ForgotPassword from "@/components/auth/ForgotPassword.vue";
   </script>
   
   <style lang="scss" scoped></style>

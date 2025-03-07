@@ -2,6 +2,7 @@
   <div>
     <DashboardPage />
   </div>
+    <Dashboard />
 </template>
 
 <script setup>
