@@ -3,6 +3,9 @@ import {
   HomeView,
   RegisterView,
   LoginView,
+  ForgotPasswordView,
+  ResetPasswordView,
+  VerifyAccountView,
   AdminView,
   ClientView,
   TailorView,
@@ -21,17 +24,12 @@ const routes = [
   { path: "/contact", name: "contact", component: ContactView },
   { path: "/login", name: "login", component: LoginView },
   { path: "/register", name: "register", component: RegisterView },
+  { path: "/verify/:token", name: "verify-account", component: VerifyAccountView },
+  { path: "/forgot-password", name: "forgot-password", component: ForgotPasswordView },
+  { path: "/reset-password", name: "reset-password", component: ResetPasswordView },
   { path: "/admin-dashboard", name: "admin-dashboard", component: AdminView },
-  {
-    path: "/client-dashboard",
-    name: "client-dashboard",
-    component: ClientView,
-  },
-  {
-    path: "/tailor-dashboard",
-    name: "tailor-dashboard",
-    component: TailorView,
-  },
+  { path: "/client-dashboard", name: "client-dashboard", component: ClientView},
+  {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
 ];
 
 const router = createRouter({
@@ -50,6 +48,9 @@ router.beforeEach(async (to) => {
     "/contact",
     "/find-garments",
     "/find-tailors",
+    "/forgot-password",
+    "/reset-password",
+    "/verify/:token",
   ];
   const authRequired = !publicPages.includes(to.path);
   const auth = useAuthStore();
