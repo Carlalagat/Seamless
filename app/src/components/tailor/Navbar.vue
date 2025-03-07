@@ -1,5 +1,7 @@
 <template>
-  <header class="bg-purple-700 text-white p-4 flex justify-between items-center shadow-md">
+  <header
+    class="bg-purple-700 text-white p-4 flex justify-between items-center shadow-md"
+  >
     <!-- Menu Button (Mobile) -->
     <button @click="toggleSidebar" class="md:hidden text-2xl">
       <font-awesome-icon icon="bars" />

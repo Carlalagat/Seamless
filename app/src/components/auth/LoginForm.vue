@@ -73,7 +73,7 @@
         <p class="text-sm text-gray-600">
           Don't have an account?
           <router-link
-            to="/signup"
+            to="/register"
             class="font-medium text-indigo-600 hover:text-indigo-500"
           >
             Sign up
