@@ -78,6 +78,6 @@
 </template>
 
 <script setup>
-import logo from '@/assets/Logo.png';</script>
+import logo from '@/assets/images/Logo.png';</script>
 
 <style lang="scss" scoped></style>
