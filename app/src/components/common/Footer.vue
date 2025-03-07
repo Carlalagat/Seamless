@@ -18,19 +18,19 @@
               <RouterLink to="/" class="hover:text-white transition">Home</RouterLink>
             </li>
             <li>
-              <RouterLink to="/" class="hover:text-white transition">About Us</RouterLink>
+              <RouterLink to="/about" class="hover:text-white transition">About Us</RouterLink>
             </li>
             <li>
-              <RouterLink to="/" class="hover:text-white transition">Find Garments</RouterLink>
+              <RouterLink to="/find-garments" class="hover:text-white transition">Find Garments</RouterLink>
             </li>
             <li>
-              <RouterLink to="/" class="hover:text-white transition">How It Works</RouterLink>
+              <RouterLink to="/how-it-works" class="hover:text-white transition">How It Works</RouterLink>
             </li>
             <li>
-              <RouterLink to="/" class="hover:text-white transition">Find Tailors</RouterLink>
+              <RouterLink to="/find-tailors" class="hover:text-white transition">Find Tailors</RouterLink>
             </li>
             <li>
-              <RouterLink to="/" class="hover:text-white transition">Contact Us</RouterLink>
+              <RouterLink to="/contact" class="hover:text-white transition">Contact Us</RouterLink>
             </li>
           </ul>
         </div>
