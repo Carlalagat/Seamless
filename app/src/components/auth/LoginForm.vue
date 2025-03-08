@@ -27,7 +27,6 @@
             }}</span>
           </div>
         </div>
-
         <!-- Password Input -->
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700"
@@ -56,7 +55,7 @@
         <div>
           <button
             type="submit"
-            class="w-full py-2 px-4 bg-purple-600 text-white font-medium rounded-md hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+            class="w-full py-2 px-4 bg-purple-600 text-white font-medium rounded-md hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Log In
           </button>
