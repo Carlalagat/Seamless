@@ -25,9 +25,9 @@
   </div>
      
       
-      
+   <div class="bg-purple-50" >   
       <div
-      class="flex flex-col justify-between p-8 bg-white"
+      class="flex flex-col justify-between p-8"
     >
       <div class="flex mx-auto max-w-7xl  max-md:flex-col-reverse max-md:gap-6 gap-2 justify-center w-full">
         <h2 class="text-2xl font-bold mb-6">Featured Garments</h2>
@@ -36,8 +36,9 @@
     <div class="w-full mx-auto max-w-7xl ">
     <div class="max-w-xl ">
         
-      </div></div>
+      </div>
     </div>
+     </div>
   
   
     <!-- Cards Section -->
@@ -45,7 +46,7 @@
       <div
         v-for="(card, index) in cards"
         :key="index"
-        class="bg-[#faefff] rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]"
+        class="bg-white rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]"
       >
         <img
           :src="card.image"
@@ -76,6 +77,7 @@
         </div>
       </div>
     </div>
+   </div>
 
     <section class="py-12">
       

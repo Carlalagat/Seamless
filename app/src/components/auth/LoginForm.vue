@@ -17,7 +17,7 @@
             placeholder="Enter your email"
             :class="{
               'border-red-500': v$.email.$error,
-              'focus:ring-indigo-500 focus:border-indigo-500': !v$.email.$error,
+              'focus:ring-purple-500 focus:border-purple-500': !v$.email.$error,
             }"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none sm:text-sm"
           />
@@ -27,7 +27,6 @@
             }}</span>
           </div>
         </div>
-
         <!-- Password Input -->
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700"
@@ -40,7 +39,7 @@
             placeholder="Enter your password"
             :class="{
               'border-red-500': v$.password.$error,
-              'focus:ring-indigo-500 focus:border-indigo-500':
+              'focus:ring-purple-500 focus:border-purple-500':
                 !v$.password.$error,
             }"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none sm:text-sm"
@@ -56,7 +55,7 @@
         <div>
           <button
             type="submit"
-            class="w-full py-2 px-4 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            class="w-full py-2 px-4 bg-purple-600 text-white font-medium rounded-md hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Log In
           </button>
@@ -77,7 +76,7 @@
       <div class="mt-4 text-center">
         <router-link
           to="/forgot-password"
-          class="text-sm text-indigo-600 hover:text-indigo-500"
+          class="text-sm text-purple-600 hover:text-purple-500"
         >
           Forgot your password?
         </router-link>
@@ -89,7 +88,7 @@
           Don't have an account?
           <router-link
             to="/register"
-            class="font-medium text-indigo-600 hover:text-indigo-500"
+            class="font-medium text-purple-600 hover:text-purple-500"
           >
             Sign up
           </router-link>
