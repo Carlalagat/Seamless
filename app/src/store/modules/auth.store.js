@@ -41,6 +41,7 @@ export const useAuthStore = defineStore("auth", () => {
       console.log("Remote login response:", response);
       /** Store the user object */
       user.value = response.data.user;
+      
       /** Store the access token */
       access_token.value = response.data.token;
       /** Store the refresh token, if provided */
