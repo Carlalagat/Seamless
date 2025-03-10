@@ -1,11 +1,11 @@
 <template>
     <div>
-      <ResetPassword />
+      <VerifyAccount />
     </div>
   </template>
   
   <script setup>
-  import ResetPassword from "@/components/auth/ResetPassword.vue";
+  import VerifyAccount from "@/components/auth/VerifyAccount.vue";
   </script>
   
   <style lang="scss" scoped></style>
