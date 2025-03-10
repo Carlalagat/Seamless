@@ -6,6 +6,6 @@
   </template>
   
   <script setup>
-  import MeasurementComponent from "@/components/client/Measurement.vue";
+  import MeasurementComponent from "@/components/client/MeasurementPage.vue";
   </script>
   

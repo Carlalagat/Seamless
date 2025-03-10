@@ -5,24 +5,25 @@
         Log In to Your Account
       </h2>
       <form @submit.prevent="onSubmit" class="space-y-4">
-        <!-- Email Input -->
+        
+        <!-- Identifier Input -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700"
-            >Email address</label
+          <label for="identifier" class="block text-sm font-medium text-gray-700"
+            >Email or Username </label
           >
           <input
-            type="email"
-            id="email"
-            v-model="formData.email"
-            placeholder="Enter your email"
+            type="text"
+            id="identifier"
+            v-model="formData.identifier"
+            placeholder="Enter your email or username"
             :class="{
-              'border-red-500': v$.email.$error,
-              'focus:ring-purple-500 focus:border-purple-500': !v$.email.$error,
+              'border-red-500': v$.identifier.$error,
+              'focus:ring-purple-500 focus:border-purple-500': !v$.identifier.$error,
             }"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none sm:text-sm"
           />
-          <div v-if="v$.email.$error" class="mt-1 text-red-500 text-xs">
-            <span v-for="error in v$.email.$errors" :key="error.$uid">{{
+          <div v-if="v$.identifier.$error" class="mt-1 text-red-500 text-xs">
+            <span v-for="error in v$.identifier.$errors" :key="error.$uid">{{
               error.$message
             }}</span>
           </div>
@@ -101,18 +102,18 @@
 <script setup>
 import { reactive, ref, computed, onMounted } from "vue";
 import useVuelidate from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import { required, minLength } from "@vuelidate/validators";
 import { useAuthStore } from "@/store";
 
 const authStore = useAuthStore();
 
 const formData = reactive({
-  email: "",
+  identifier: "",
   password: "",
 });
 
 const rules = computed(() => ({
-  email: { required, email },
+  identifier: { required },
   password: { required, minLength: minLength(3) },
 }));
 

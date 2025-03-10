@@ -12,6 +12,9 @@
 import { RouterView } from "vue-router";
 import Header from "./components/common/Header.vue";
 import Footer from "./components/common/Footer.vue";
+import MeasurementPage from "./pages/client/MeasurementPage.vue";
+// import Measurement from "./components/client/Measurement.vue";
+
 </script>
 
 <style scoped></style>

@@ -198,7 +198,7 @@ const isAuthenticated = computed(() => !!authStore.user);
 const userDisplayName = computed(() => {
   const user = authStore.user;
   if (!user) return "";
-  return user.username || user.email || "User";
+  return user.username || user.email;
 });
 
 const logout = () => {
