@@ -48,6 +48,29 @@
           Find Tailors
         </RouterLink>
       </li>
+<!-- Desktop Navigation for Measurement -->
+<li>
+
+  <RouterLink
+    to="/measurements"
+    class="hover:text-purple-600"
+    active-class="text-purple-600 font-bold"
+  >
+    Measurements
+  </RouterLink>
+</li>
+
+<!-- In Mobile Menu Dropdown for Measurement -->
+<!-- <li>
+  <RouterLink
+    to="/measurements"
+    class="hover:text-purple-600"
+    active-class="text-purple-600 font-bold"
+    @click="toggleMobileMenu"
+  >
+    Measurements
+  </RouterLink>
+</li> -->
       <li>
         <RouterLink
           to="/contact"
@@ -198,7 +221,7 @@ const isAuthenticated = computed(() => !!authStore.user);
 const userDisplayName = computed(() => {
   const user = authStore.user;
   if (!user) return "";
-  return user.username || user.email || "User";
+  return user.username || user.email;
 });
 
 const logout = () => {
