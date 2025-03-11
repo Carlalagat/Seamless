@@ -57,10 +57,13 @@
   
   <script setup>
   import { ref, computed } from 'vue';
+  import { HelpCircle, ArrowLeft, Save } from 'lucide-vue-next';
+
   
   const steps = [
-    { label: 'Chest', instructions: 'Measure around your chest.', minValue: 30, maxValue: 60, unit: 'inches', tips: ['Keep tape level.'] },
+    { label: 'Chest', instructions: 'Measure around the fullest part of your chest, keeping the tape parallel to the ground.', minValue: 30, maxValue: 60, unit: 'inches', tips: ['Keep tape level.'] },
     { label: 'Waist', instructions: 'Measure your natural waistline.', minValue: 24, maxValue: 50, unit: 'inches', tips: ['Don’t hold your breath.'] },
+    { label: 'Shoulders', instructions: 'Measure from the edge of one shoulder to the edge of the other.', minValue: 14, maxValue: 24, unit: 'inches', tips: ['Stand straight.'] },
   ];
   
   const activeStep = ref(0);
@@ -92,7 +95,7 @@
     saving.value = true;
     await new Promise(resolve => setTimeout(resolve, 1500));
     saving.value = false;
-    alert('Measurements saved!');
+    alert('Measurements saved successfully!');
   };
   </script>
   
@@ -100,4 +103,3 @@
   .measurement-card { height: 100%; }
   .tips-section { margin-top: 10px; padding: 10px; background: #f5f5f5; border-left: 4px solid #007bff; }
   </style>
-  

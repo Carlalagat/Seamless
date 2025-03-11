@@ -1,11 +1,7 @@
 <template>
-    <div class="p-6">
-      <h1 class="text-2xl font-bold text-gray-800">Take Your Measurements</h1>
-      <MeasurementComponent />
-    </div>
-  </template>
-  
-  <script setup>
-  import MeasurementComponent from "@/components/client/MeasurementPage.vue";
-  </script>
-  
+  <MeasurementPage />
+</template>
+
+<script setup>
+import MeasurementPage from '@/components/client/MeasurementPage.vue';
+</script>

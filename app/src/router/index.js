@@ -13,6 +13,7 @@ import {
   FindGarmentView,
   FindTailorView,
   ContactView,
+  MeasurementView,
 } from "../views";
 import { useAuthStore } from "../store";
 
@@ -29,6 +30,7 @@ const routes = [
   { path: "/reset-password", name: "reset-password", component: ResetPasswordView },
   { path: "/admin-dashboard", name: "admin-dashboard", component: AdminView },
   { path: "/client-dashboard", name: "client-dashboard", component: ClientView},
+  {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
 ];
 
@@ -51,6 +53,7 @@ router.beforeEach(async (to) => {
     "/forgot-password",
     "/reset-password",
     "/verify/:token",
+    "/measurements",
   ];
   const authRequired = !publicPages.includes(to.path);
   const auth = useAuthStore();

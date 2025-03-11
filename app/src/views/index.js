@@ -11,6 +11,7 @@ import VerifyAccountView from "./auth/VerifyAccountView.vue";
 import AdminView from "./admin/AdminView.vue";
 import ClientView from "./client/ClientView.vue";
 import TailorView from "./tailor/TailorView.vue";
+import MeasurementView from "./client/MeasurementView.vue";
 
 export {
   HomeView,
@@ -26,4 +27,5 @@ export {
   AdminView,
   ClientView,
   TailorView,
+  MeasurementView,
 };
