@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "element-plus": "^2.9.6",
+    "lucide-vue-next": "^0.479.0"
+  }
+}
