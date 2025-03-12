@@ -49,7 +49,7 @@
   
       <div class="flex justify-between mt-4">
         <el-button :icon="ArrowLeft" @click="previousStep" :disabled="activeStep === 0">Back</el-button>
-        <el-button v-if="isLastStep" type="primary" :icon="Save" :loading="saving" @click="saveMeasurements" :disabled="!isCurrentStepValid">Save</el-button>
+        <el-button v-if="isLastStep" type="primary" :icon="Save" :loading="saving" @click="saveMeasurements" :disabled="!isCurrentStepValid">Save Measurements</el-button>
         <el-button v-else type="primary" @click="nextStep" :disabled="!isCurrentStepValid">Next</el-button>
       </div>
     </div>
