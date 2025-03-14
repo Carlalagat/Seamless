@@ -10,9 +10,10 @@
     <!-- Sidebar -->
     <aside
       :class="[
-        'bg-white min-h-screen p-6 shadow-lg fixed md:static transition-transform duration-300',
+        'bg-gray-100/2 p-6 shadow-lg fixed md:static transition-transform duration-300',
         isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
       ]"
+      :style="{ height: isMobile && isOpen ? 'auto' : '100vh' }"
     >
       <!-- Close Button (Mobile) -->
       <button
@@ -22,88 +23,85 @@
         <font-awesome-icon icon="times" class="text-2xl" />
       </button>
 
-      <!-- Logo -->
-      <div class="flex items-center space-x-2">
-        <img
-          src="@/assets/logo.png"
-          alt="SeamLess"
-          class="w-32 md:w-40 mx-auto"
-        />
-      </div>
-
       <!-- Navigation Menu -->
       <nav class="mt-8">
-        <ul class="space-y-6">
+        <ul class="space-y-8">
           <li>
-            <router-link to="/dashboard" class="sidebar-link">
+            <router-link to="/tailor-dashboard" class="sidebar-link" @click="toggleSidebar">
               <font-awesome-icon icon="chart-line" /> Dashboard
             </router-link>
           </li>
           <li>
-            <router-link to="/orders" class="sidebar-link">
+            <router-link to="/orders" class="sidebar-link" @click="toggleSidebar">
               <font-awesome-icon icon="box" /> Orders
               <span class="badge">32</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/measurements" class="sidebar-link">
+            <router-link to="/measurements" class="sidebar-link" @click="toggleSidebar">
               <font-awesome-icon icon="ruler" /> Measurements
             </router-link>
           </li>
           <li>
-            <router-link to="/marketing" class="sidebar-link">
-              <font-awesome-icon icon="bullhorn" /> Marketing
+            <router-link to="/notifications" class="sidebar-link" @click="toggleSidebar">
+              <font-awesome-icon icon="bell" /> Notifications
+              <span class="badge">10</span>
             </router-link>
           </li>
         </ul>
       </nav>
 
-      <!-- Notifications -->
-      <div class="mt-6">
-        <router-link to="/notifications" class="sidebar-link">
-          <font-awesome-icon icon="bell" /> Notifications
-          <span class="badge">10</span>
-        </router-link>
-      </div>
+      <!-- Additional Content (Visible on larger screens) -->
+      <div v-if="!isMobile">
 
-      <!-- Profile Section -->
-      <div class="mt-12 border-t pt-4">
-        <div class="flex items-center space-x-3">
-          <img
-            src="https://fakeimg.pl/40x40"
-            class="rounded-full w-10 h-10"
-            alt="Tailor"
-          />
-          <div class="flex flex-col">
-            <h4 class="font-semibold">Tailor</h4>
-            <p class="text-xs text-gray-500">kinya@nakurutailors.co.ke</p>
+        <!-- Profile Section -->
+        <div class="mt-12 border-t pt-4">
+          <div class="flex items-center space-x-3">
+            <img
+              :src="user.profileImage || 'https://fakeimg.pl/40x40'"
+              class="rounded-full w-10 h-10"
+              :alt="user.username"
+            />
+            <div class="flex flex-col items-center mt-8 space-y-4">
+              <h4 class="font-semibold">{{ user.username }}</h4>
+              <p class="text-xs text-gray-500">{{ user.email }}</p>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Logout -->
-      <button
-        class="mt-6 w-full bg-red-500 py-2 rounded-xl hover:bg-red-400"
-        id="logout"
-      >
-        <router-link
-          to="/login"
-          class="font-medium text-white hover:text-gray-300"
-        >
-          <font-awesome-icon icon="sign-out-alt" /> Logout
-        </router-link>
-      </button>
     </aside>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import { ref, computed, defineProps, defineEmits, onUnmounted } from "vue";
+import { useAuthStore } from "@/store";
 
-const isOpen = ref(false);
+const props = defineProps({
+  isOpen: Boolean,
+});
+
+const emit = defineEmits(["toggleSidebar"]);
+
 const toggleSidebar = () => {
-  isOpen.value = !isOpen.value;
+  emit("toggleSidebar");
 };
+
+const authStore = useAuthStore();
+const user = computed(() => authStore.user);
+
+const isMobile = ref(window.innerWidth <= 768);
+
+window.addEventListener('resize', () => {
+  isMobile.value = window.innerWidth <= 768;
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', () => {
+    isMobile.value = window.innerWidth <= 768;
+  });
+});
 </script>
 
 <style scoped>
@@ -143,7 +141,6 @@ const toggleSidebar = () => {
 @media (max-width: 768px) {
   aside {
     width: 75%;
-    height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
