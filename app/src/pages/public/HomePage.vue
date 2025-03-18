@@ -8,7 +8,7 @@
             self-measurements and personalized service.
           </p>
           <div class="mt-6 flex space-x-4">
-            <router-link to="/login">
+            <router-link to="/register">
             <button class="bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700">Get Started</button>
             </router-link>
             <router-link to = "/find-garments">
@@ -46,7 +46,7 @@
       <div
         v-for="(card, index) in cards"
         :key="index"
-        class="bg-white rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]"
+        class="bg-white rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[300px] md:w-[350px] lg:w-[400px]"
       >
         <img
           :src="card.image"
@@ -89,7 +89,7 @@
     <div
       v-for="(tailor, index) in tailors"
       :key="index"
-      class="bg-purple-50 rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]">
+      class="bg-purple-50 rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[300px] md:w-[350px] lg:w-[400px]">
       <img
         :src="tailor.image"
         class="rounded-lg w-[90%] h-[180px] object-cover"/>
