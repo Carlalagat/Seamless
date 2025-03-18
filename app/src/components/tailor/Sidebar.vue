@@ -23,6 +23,11 @@
         <font-awesome-icon icon="times" class="text-2xl" />
       </button>
 
+      <!-- logo linking to Client Dashboard -->
+       <RouterLink to="/client-dashboard" class="flex items-center space-x-2">
+        <img src="@/assets/logo.png" alt="SeamLess" class="w-40 center">
+       </RouterLink>
+
       <!-- Navigation Menu -->
       <nav class="mt-8">
         <ul class="space-y-8">
@@ -34,7 +39,7 @@
           <li>
             <router-link to="/orders" class="sidebar-link" @click="toggleSidebar">
               <font-awesome-icon icon="box" /> Orders
-              <span class="badge">32</span>
+              <!-- <span class="badge">32</span> -->
             </router-link>
           </li>
           <li>
@@ -45,7 +50,11 @@
           <li>
             <router-link to="/notifications" class="sidebar-link" @click="toggleSidebar">
               <font-awesome-icon icon="bell" /> Notifications
-              <span class="badge">10</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/profile" class="sidebar-link" @click="toggleSidebar">
+              <font-awesome-icon icon="user" /> Profile
             </router-link>
           </li>
         </ul>
@@ -65,6 +74,9 @@
             <div class="flex flex-col items-center mt-8 space-y-4">
               <h4 class="font-semibold">{{ user.username }}</h4>
               <p class="text-xs text-gray-500">{{ user.email }}</p>
+              <router-link to="/profile" class="text-purple-600 text-sm">
+                <font-awesome-icon icon="cog" /> Edit Profile
+              </router-link>
             </div>
           </div>
         </div>
