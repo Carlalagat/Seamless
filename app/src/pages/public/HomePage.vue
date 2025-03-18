@@ -194,13 +194,13 @@
         ],
         tailors: [
         {
-          image: "../src/assets/images/tailor a.jpg",
+          image: "../src/assets/images/tailor a.webp",
           name: "James Michael",
           reviewText: "4.9 (126 reviews)",
           description: "Specialized in custom and formal suits.",
         },
         {
-          image: "../src/assets/images/tailor b.jpg",
+          image: "../src/assets/images/tailor b.avif",
           name: "Benson Ogola",
           reviewText: "4.9 (124 reviews)",
           description: "Specializing in bespoke suits and formal wear.",
