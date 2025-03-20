@@ -61,7 +61,7 @@
           <p class="text-xs text-gray-500">{{ user.email }}</p>
           <router-link
             to="/products-page"
-            class="text-white bg-red-600 p-2 space-x-2 rounded items-center justify-center flex font-bold"
+            class="text-white bg-red-600 shadow-lg p-2 space-x-2 rounded items-center justify-center flex font-bold"
             id="logout"
           >
             <i class="fa fa-sign-out"></i> <p>Logout</p>
