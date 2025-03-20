@@ -2,16 +2,31 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
 
-  <div class="h-screen w-full bg-purple-100 overflow-auto "> 
-<div class="h-20  flex justify-center items-center">
-  <button class=" bg-purple-500 text-white py-2 rounded m-2 w-full"><i class="fa fa-home text-1xl"></i> Dashboard</button>
-  <button class=" bg-purple-500 text-white py-2 rounded m-2 w-full"><i class="fa fa-user text-1xl"></i> Clients</button>
-  <button class=" bg-purple-500 text-white py-2 rounded m-2 w-full"><i class="fa fa-scissors text-1xl"></i> Tailors</button>
-  <a href="#" class="text-purple-500"><i class="fa fa-comments m-4"></i></a>
-  <a href="#"><i class="fa fa-sign-out m-4 text-purple-500"></i></a>
-  
+  <div class="flex h-screen ">
+  <!-- Sidebar -->
+  <div class="w-1/5 bg-purple-100 p-4 flex flex-col rounded mt-1 ">
+  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
+    <i class="fa fa-home text-1xl mr-2"></i> Dashboard
+  </button>
+  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
+    <i class="fa fa-user text-1xl mr-2"></i> Clients
+  </button>
+  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
+    <i class="fa fa-scissors text-1xl mr-2"></i> Tailors
+  </button>
+  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
+    <i class="fa fa-comments text-1xl mr-2"></i> Messages
+  </button>
+  <div class="mt-auto flex flex-col w-full py-2 px-4">
+    <a href="#" class="text-purple-500 flex items-center py-2">
+      <i class="fa fa-sign-out mr-2"></i> Logout
+    </a>
+  </div>
 </div>
-<div class="  h-screen p-5 flex flex-col ">
+
+
+
+<div class=" px-1 absolute right-[2px] h-screen flex flex-col ml-1/5 w-4/5 overflow-auto">
   <div class="bg-purple-200 h-80 flex flex-col rounded m-1 p-4">
   
   <!-- Title & Icon -->
