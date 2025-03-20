@@ -1,11 +1,12 @@
 <template>
+  
   <div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
     <!-- Sidebar -->
     <Sidebar :isOpen="sidebarOpen" @toggleSidebar="toggleSidebar" />
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-      <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600">☰</button>
+      <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600 absolute right-10 text-2xl ">☰</button>
 
       <!-- Dashboard Content -->
       <div class="p-4 sm:p-6">
