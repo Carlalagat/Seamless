@@ -100,7 +100,7 @@
 <span class="text-2xl px-3"> 100</span>
 <div class="flex items-center">
   <i class="fa-solid fa-arrow-down text-red-600 text-3xl  "></i>
-<span class="text-2xl p-2">20%</span></div>
+<span class="text-2xl p-2">50%</span></div>
 </div>
 
   </div>
