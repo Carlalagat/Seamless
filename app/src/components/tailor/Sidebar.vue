@@ -39,7 +39,7 @@
         <li
           v-for="(item, index) in menuItems"
           :key="index"
-          class="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:bg-gray-700"
+          class="flex items-center gap-2 p-3 rounded-lg cursor-pointer  hover:text-purple-700 transition duration-500"
           @click="activeContent = item.content"
         >
           <component :is="item.icon" />
@@ -74,6 +74,87 @@
   <!-- Main Content Area -->
   <div class="flex-1 p-6" id="maincontent">
     <h1 class="text-2xl font-semibold">{{ activeContent.title }}</h1>
+
+    <!-- Display Dashboard when Dashboard Section is Active -->
+    <div v-if="activeContent.name === 'Dashboard'" class="mt-6">
+      <h2 class="text-xl font-semibold">Welcome to the Dashboard</h2>
+      <p class="text-gray-600 mt-4">Here are some key insights and actions for you.</p>
+
+      <!-- Dashboard Content for Social Media Feed, Promotions, and Legal/Compliance -->
+      <div class="mt-8 space-y-6">
+        <!-- Social Media Feed -->
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold text-gray-800">Social Media Feed</h3>
+          <p class="text-gray-600 mt-2">Latest posts and updates from your social media channels.</p>
+          <ul class="mt-4 space-y-2">
+            <li class="flex justify-between">
+              <span>Instagram Post 1</span>
+              <a href="#" class="text-blue-500">View</a>
+            </li>
+            <li class="flex justify-between">
+              <span>Facebook Update 1</span>
+              <a href="#" class="text-blue-500">View</a>
+            </li>
+            <li class="flex justify-between">
+              <span>Twitter Post 1</span>
+              <a href="#" class="text-blue-500">View</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Promotions and Discounts -->
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold text-gray-800">Promotions and Discounts</h3>
+          <p class="text-gray-600 mt-2">Current promotions and available discounts for your products.</p>
+          <ul class="mt-4 space-y-2">
+            <li class="flex justify-between">
+              <span>Spring Sale - 20% Off</span>
+              <span class="text-green-500">Expires: 2025-03-31</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Buy 2 Get 1 Free</span>
+              <span class="text-green-500">Expires: 2025-04-15</span>
+            </li>
+          </ul>
+        
+        </div>
+        
+
+        <!-- Legal and Compliance -->
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold text-gray-800">Legal & Compliance</h3>
+          <p class="text-gray-600 mt-2">Important legal and compliance information regarding your services.</p>
+          <ul class="mt-4 space-y-2">
+            <li>
+              <a href="#" class="text-blue-500">Terms of Service</a>
+            </li>
+            <li>
+              <a href="#" class="text-blue-500">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-blue-500">Refund & Return Policy</a>
+            </li>
+          </ul>
+        </div>
+        <ul class="mt-4 space-y-4">
+          <li>
+            <router-link to="/orders" class="text-blue-500 hover:text-blue-700">
+              <i class="fa fa-arrow-right"></i> View Orders
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/products" class="text-blue-500 hover:text-blue-700">
+              <i class="fa fa-arrow-right"></i> Manage Client
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/customers" class="text-blue-500 hover:text-blue-700">
+              <i class="fa fa-arrow-right"></i> View Customers
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <!-- Display Orders when Orders Section is Active -->
     <div v-if="activeContent.name === 'Orders'" class="mt-6">
@@ -141,12 +222,16 @@
       <p class="text-gray-600 mt-4">Here are the customer details and insights from recent interactions.</p>
       <ul class="mt-4 space-y-4">
         <li class="bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold">John Doe</h3>
-          <p class="text-sm text-gray-600">Recent Purchase: Product 1</p>
+          <h3 class="text-lg font-semibold">Customer #001</h3>
+          <p class="text-sm text-gray-600">Last purchase: 2025-03-18</p>
+          <p class="mt-2">Email: customer001@example.com</p>
+          <p class="mt-2">Total spent: $159.99</p>
         </li>
         <li class="bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold">Jane Smith</h3>
-          <p class="text-sm text-gray-600">Recent Purchase: Product 2</p>
+          <h3 class="text-lg font-semibold">Customer #002</h3>
+          <p class="text-sm text-gray-600">Last purchase: 2025-03-16</p>
+          <p class="mt-2">Email: customer002@example.com</p>
+          <p class="mt-2">Total spent: $89.99</p>
         </li>
       </ul>
     </div>
@@ -154,23 +239,36 @@
     <!-- Display Settings when Settings Section is Active -->
     <div v-if="activeContent.name === 'Settings'" class="mt-6">
       <h2 class="text-xl font-semibold">Settings</h2>
-      <p class="text-gray-600 mt-4">Update your profile and account settings here.</p>
-      <form class="mt-4 space-y-4">
-        <div>
-          <label for="username" class="block text-gray-700">Username</label>
-          <input type="text" id="username" class="mt-2 p-2 border border-gray-300 rounded-lg w-full" />
+      <p class="text-gray-600 mt-4">Manage your account settings here.</p>
+      
+      <!-- Settings Form -->
+      <form>
+        <div class="mt-4">
+          <label for="username" class="block text-sm font-semibold text-gray-800">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="w-full mt-2 p-2 border rounded-md"
+            placeholder="Enter new username"
+          />
         </div>
-        <div>
-          <label for="email" class="block text-gray-700">Email</label>
-          <input type="email" id="email" class="mt-2 p-2 border border-gray-300 rounded-lg w-full" />
-        </div>
-        <button type="submit" class="mt-4 bg-blue-500 text-white py-2 px-6 rounded-lg">Save Changes</button>
-      </form>
-    </div>
 
-    <!-- Display Placeholder Content for Other Sections -->
-    <div v-else class="mt-6 text-gray-600">
-      <p>{{ activeContent.content }}</p>
+        <div class="mt-4">
+          <label for="email" class="block text-sm font-semibold text-gray-800">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full mt-2 p-2 border rounded-md"
+            placeholder="Enter new email address"
+          />
+        </div>
+
+        <div class="mt-4 flex justify-end">
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Save Changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -196,24 +294,47 @@ const toggleSidebar = () => {
 const authStore = useAuthStore();
 const user = computed(() => authStore.user);
 
+// Sample products and customer data
+const products = [
+  {
+    id: 1,
+    name: 'Product 1',
+    image: 'https://via.placeholder.com/300',
+    description: 'This is a description of Product 1.',
+    price: 29.99
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://via.placeholder.com/300',
+    description: 'This is a description of Product 2.',
+    price: 49.99
+  },
+  {
+    id: 3,
+    name: 'Product 3',
+    image: 'https://via.placeholder.com/300',
+    description: 'This is a description of Product 3.',
+    price: 39.99
+  }
+];
+
+const customers = [
+  { name: 'Customer 1', email: 'customer1@example.com', lastPurchase: '2025-03-18', totalSpent: 159.99 },
+  { name: 'Customer 2', email: 'customer2@example.com', lastPurchase: '2025-03-16', totalSpent: 89.99 }
+];
+
 // Menu items with content linked to each section
 const menuItems = [
-  { name: 'Dashboard', icon: Home, content: { name: 'Dashboard', title: 'Welcome to the Dashboard!', content: 'Some dashboard content.' } },
-  { name: 'Orders', icon: ShoppingCart, content: { name: 'Orders', title: 'Here are your orders.', content: 'Here are the products you ordered.' } },
-  { name: 'Products', icon: List, content: { name: 'Products', title: 'Manage your products here.', content: 'You can add or update products here.' } },
-  { name: 'Customers', icon: Users, content: { name: 'Customers', title: 'Customer details and insights.', content: 'View customer information and insights.' } },
-  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: 'Update your profile.', content: 'Update your personal settings here.' } },
+  { name: 'Dashboard', icon: Home, content: { name: 'Dashboard', content: 'Social Media Feed, Promotions, and Legal/Compliance' } },
+  { name: 'Orders', icon: ShoppingCart, content: { name: 'Orders', title: 'Your Orders', content: 'Here are your orders and details.' } },
+  { name: 'Products', icon: List, content: { name: 'Products', title: 'Manage Products', content: 'Add and update products.' } },
+  { name: 'Customers', icon: Users, content: { name: 'Customers', title: 'Customer Insights', content: 'Manage and view customer data.' } },
+  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: 'Settings', content: 'Update your personal settings here.' } },
 ];
 
 // Set initial active content
 const activeContent = ref(menuItems[0].content);
-
-// Mock product data for Orders section
-const products = [
-  { id: 1, name: 'Product 1', description: 'Description for product 1', price: 29.99, image: 'https://via.placeholder.com/300x200' },
-  { id: 2, name: 'Product 2', description: 'Description for product 2', price: 49.99, image: 'https://via.placeholder.com/300x200' },
-  { id: 3, name: 'Product 3', description: 'Description for product 3', price: 39.99, image: 'https://via.placeholder.com/300x200' },
-];
 
 // Handle resizing for mobile view
 const isMobile = ref(window.innerWidth <= 768);
@@ -225,7 +346,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateIsMobile);
 });
 </script>
-
 
 <style scoped>
 /* Styling for sidebar links */
