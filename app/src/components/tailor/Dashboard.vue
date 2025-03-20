@@ -1,11 +1,12 @@
 <template>
+  
   <div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
     <!-- Sidebar -->
     <Sidebar :isOpen="sidebarOpen" @toggleSidebar="toggleSidebar" />
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-      <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600">☰</button>
+      <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600 absolute right-10 text-2xl ">☰</button>
 
       <!-- Dashboard Content -->
       <div class="p-4 sm:p-6">
@@ -61,7 +62,7 @@
           </div>
         </div>
 
-        <!-- New Messages -->
+        <!-- New Messages
         <div class="mt-8 bg-white p-4 sm:p-6 rounded-lg shadow-md">
           <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">New Messages</h2>
           <ul>
@@ -69,7 +70,7 @@
               <strong>{{ message.client }}</strong>: {{ message.text }}
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -104,11 +105,11 @@ const recentOrders = ref([
   { id: 3, client: "Chris Brown", garment: "Casual Jacket", status: "Completed", dueDate: "March 10", statusClass: "bg-green-100 text-green-600" },
 ]);
 
-// New Messages
-const messages = ref([
-  { id: 1, client: "Alice Johnson", text: "Hey, can I change the fabric for my dress?" },
-  { id: 2, client: "Michael Lee", text: "When will my order be ready?" },
-]);
+// // New Messages
+// const messages = ref([
+//   { id: 1, client: "Alice Johnson", text: "Hey, can I change the fabric for my dress?" },
+//   { id: 2, client: "Michael Lee", text: "When will my order be ready?" },
+// ]);
 
 // Orders Chart
 onMounted(() => {
