@@ -162,6 +162,17 @@
             Find Tailors
           </RouterLink>
         </li>
+
+        <li>
+
+<RouterLink
+  to="/measurements"
+  class="hover:text-purple-600"
+  active-class="text-purple-600 font-bold"
+>
+  Measurements
+</RouterLink>
+</li>
         <li>
           <RouterLink
             to="/contact"
