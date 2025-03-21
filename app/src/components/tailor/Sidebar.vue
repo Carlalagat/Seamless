@@ -52,16 +52,16 @@
     <div class="mt-12 border-t pt-4">
       <div class="flex items-center space-x-3">
         <div class="flex flex-col mt-8 space-y-4">
-          <img
-            :src="user.profileImage || 'https://fakeimg.pl/40x40'"
-            class="rounded-full w-10 h-10"
-            :alt="user.username"
-          />
+          <div class="relative flex items-center justify-center w-10 h-10 bg-gray-400 rounded-full">
+            <span class="text-white font-semibold">
+              {{ user.initials }}
+            </span>
+          </div>
           <h4 class="font-semibold">{{ user.username }}</h4>
           <p class="text-xs text-gray-500">{{ user.email }}</p>
           <router-link
             to="/products-page"
-            class="text-white bg-red-600 shadow-lg p-2 space-x-2 rounded items-center justify-center flex font-bold"
+            class="text-white bg-red-600 p-2 space-x-2 rounded items-center justify-center flex font-bold"
             id="logout"
           >
             <i class="fa fa-sign-out"></i> <p>Logout</p>
@@ -292,7 +292,14 @@ const toggleSidebar = () => {
 
 // Fetch user data from the store
 const authStore = useAuthStore();
-const user = computed(() => authStore.user);
+const user = computed(() => {
+  const fullname = authStore.user.username;
+  const initials = fullname.split(' ').map(name => name[0]).join('');
+  return {
+    ...authStore.user,
+    initials,
+  };
+});
 
 // Sample products and customer data
 const products = [
