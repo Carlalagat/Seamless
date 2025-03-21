@@ -4,29 +4,29 @@
 
   <div class="flex h-screen ">
   <!-- Sidebar -->
-  <div class="w-1/5 bg-purple-100 p-4 flex flex-col rounded mt-1 ">
-  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
-    <i class="fa fa-home text-1xl mr-2"></i> Dashboard
+  <div class=" text-sm w-1/5 md:w-[16%] lg:w-[10%] w-70 bg-purple-100 p-4 flex flex-col items-center md:items-start rounded mt-1">
+  <button class="bg-purple-500 text-white py-2 px-1 rounded my-2 mx-1 w-full flex flex-col md:flex-row items-center text-sm md:text-base">
+    <i class="fa fa-home text-sm"></i>
+    <span class="md:ml-1 text-sm">Dashboard</span>
   </button>
-  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
-    <i class="fa fa-user text-1xl mr-2"></i> Clients
+  <button class="bg-purple-500 text-white py-2 px-1 rounded my-2 mx-1 w-full flex flex-col md:flex-row items-center text-sm md:text-base">
+    <i class="fa fa-user text-sm"></i>
+    <span class="md:ml-2 text-sm">Clients</span>
   </button>
-  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
-    <i class="fa fa-scissors text-1xl mr-2"></i> Tailors
+  <button class="bg-purple-500 text-white py-2 px-1 rounded my-2 mx-1 w-full flex flex-col md:flex-row items-center text-sm md:text-base">
+    <i class="fa fa-scissors text-sm"></i>
+    <span class="md:ml-2 text-sm">Tailors</span>
+  </button> 
+  <button class="bg-purple-500 text-white py-2 px-1 rounded my-2 mx-1 w-full flex flex-col md:flex-row items-center text-sm md:text-base">
+    <i class="fa fa-comments text-sm"></i>
+    <span class="md:ml-1 text-sm">Messages</span>
   </button>
-  <button class="bg-purple-500 text-white py-2 px-4 rounded my-2 w-full flex items-center">
-    <i class="fa fa-comments text-1xl mr-2"></i> Messages
-  </button>
-  <div class="mt-auto flex flex-col w-full py-2 px-4">
-    <a href="#" class="text-purple-500 flex items-center py-2">
-      <i class="fa fa-sign-out mr-2"></i> Logout
-    </a>
-  </div>
 </div>
 
 
 
-<div class=" px-1 absolute right-[2px] h-screen flex flex-col ml-1/5 w-4/5 overflow-auto">
+
+<div class=" px-1 absolute right-[2px] h-screen flex flex-col md:w-[84%] lg:w-[90%] w-4/5 overflow-auto">
   <div class="bg-purple-200 h-80 flex flex-col rounded m-1 p-4">
   
   <!-- Title & Icon -->
