@@ -59,13 +59,13 @@
           />
           <h4 class="font-semibold">{{ user.username }}</h4>
           <p class="text-xs text-gray-500">{{ user.email }}</p>
-          <router-link
-            to="/products-page"
-            class="text-white bg-red-600 p-2 space-x-2 rounded items-center justify-center flex font-bold"
+          <button
+            @click="logout"
+            class="text-white bg-red-600 shadow-lg p-2 space-x-2 rounded items-center justify-center flex font-bold"
             id="logout"
           >
             <i class="fa fa-sign-out"></i> <p>Logout</p>
-          </router-link>
+        </button>
         </div>
       </div>
     </div>
@@ -138,7 +138,7 @@
         </div>
         <ul class="mt-4 space-y-4">
           <li>
-            <router-link to="/orders" class="text-blue-500 hover:text-blue-700">
+            <router-link to="/tailor-dashboard/products" class="text-blue-500 hover:text-blue-700">
               <i class="fa fa-arrow-right"></i> View Orders
             </router-link>
           </li>
@@ -293,6 +293,9 @@ const toggleSidebar = () => {
 // Fetch user data from the store
 const authStore = useAuthStore();
 const user = computed(() => authStore.user);
+const logout = () => {
+  authStore.logout()
+}
 
 // Sample products and customer data
 const products = [
