@@ -52,7 +52,13 @@
     <div class="mt-12 border-t pt-4">
       <div class="flex items-center space-x-3">
         <div class="flex flex-col mt-8 space-y-4">
+        <div 
+          v-if="!user.profileImage"
+          class="rounded-full w-10 h-10 bg-gray-400 flex items-center justify-center text-white font-bold text-xl">
+          {{  userInitials }}
+        </div>
           <img
+            v-else
             :src="user.profileImage || 'https://fakeimg.pl/40x40'"
             class="rounded-full w-10 h-10"
             :alt="user.username"
@@ -296,6 +302,16 @@ const user = computed(() => authStore.user);
 const logout = () => {
   authStore.logout()
 }
+
+// compute user initials from username
+const userInitials = computed(() => {
+  if (!user.value.username) return '';
+  return user.value.username
+    .split(' ')
+    .map((name) => name[0])
+    .join('')
+    .toUpperCase();
+});
 
 // Sample products and customer data
 const products = [
