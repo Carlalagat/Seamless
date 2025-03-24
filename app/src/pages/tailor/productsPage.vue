@@ -1,6 +1,6 @@
 <template>
-    <div class="h-screen w-full grid grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-3  overflow-auto">
-       <div class=" flex justify-center items-center " >
+    <div class="h-screen w-full flex flex-col gap-3  overflow-auto">
+       <div class=" flex justify-center items-center  " >
         <form action="" class="flex flex-col p-[30px] rounded shadow-lg">
             <h1 class=" font-bold text-2xl text-center my-3">Post Your Designs</h1>
             <input type="file" class="my-1 p-[10px] border border-purple-300 rounded" accept="image/jpg, image/png, image/jpeg" required >
