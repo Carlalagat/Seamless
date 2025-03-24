@@ -52,6 +52,7 @@
     <div class="mt-12 border-t pt-4">
       <div class="flex items-center space-x-3">
         <div class="flex flex-col mt-8 space-y-4">
+        
         <div 
           v-if="!user.profileImage"
           class="rounded-full w-10 h-10 bg-gray-400 flex items-center justify-center text-white font-bold text-xl">
@@ -127,9 +128,10 @@
 
     <!-- Display Products when Products Section is Active -->
     <div v-if="activeContent.name === 'Products'">
-      <div class="h-screen w-full flex flex-col gap-3  overflow-auto">
+      <h1 class="text-center font-bold text-3xl">Manage Products</h1>
+      <div class="h-screen w-full flex flex-col gap-3 overflow-auto p-[30px]">
        <div class=" flex justify-center items-center  " >
-        <form action="" class="flex flex-col p-[30px] rounded shadow-lg">
+        <form action="" class="flex flex-col p-[30px] bg-white  rounded shadow-lg">
             <h1 class=" font-bold text-2xl text-center my-3">Post Your Designs</h1>
             <input type="file" class="my-1 p-[10px] border border-purple-300 rounded" accept="image/jpg, image/png, image/jpeg" required >
             <input type="text"  class="my-1 p-[10px] rounded shadow-lg border border-purple-300"  placeholder="Design" required>
@@ -139,7 +141,7 @@
         </form>
        </div> 
     
-    <div class=" shadow-lg rounded grid grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-3    " >
+    <div class=" shadow-lg rounded  grid grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-3    " >
         
         <div class=" w-[400px] bg-fuchsia-100 rounded-lg shadow-lg h-[400px]  p-[20px] m-[15px]">
             <img
@@ -226,7 +228,7 @@
     </div>
     <!-- Chat Notifications -->
     <div v-if="activeContent.name === 'Chats'" class="mt-6">
-      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg">
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
         <img
                 :src="TrouserImage"
                 alt="tuxedo Image"
@@ -237,24 +239,48 @@
     View
   </router-link>
       </div>
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
+        <img
+                :src="Blazerimage"
+                alt="tuxedo Image"
+                class="w-[100px]  rounded-full h-[100px] p-[15px] "
+              />
+              <p>Hey there! i'm using whatsapp...</p>
+              <router-link to="/tailor-dashboard/Chat" class="text-white p-[10px] bg-fuchsia-700 ml-[45px] rounded">
+    View
+  </router-link>
+      </div>
+
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
+        <img
+                :src="TuxedoImage"
+                alt="tuxedo Image"
+                class="w-[100px]  rounded-full h-[100px] p-[15px] "
+              />
+              <p>Hey there! i'm using whatsapp...</p>
+              <router-link to="/tailor-dashboard/Chat" class="text-white p-[10px] bg-fuchsia-700 ml-[45px] rounded">
+    View
+  </router-link>
+      </div>
+      
     </div>
 
     <!-- Display Settings when Settings Section is Active -->
-    <div v-if="activeContent.name === 'Settings'" class="mt-6">
-      
-      <p class="text-gray-600 mt-4">Manage your account settings here.</p>
+    <div v-if="activeContent.name === 'Settings'" class="mt-6 flex justify-center items-center flex-col ">
+      <h1 class="text-center font-bold text-3xl">Settings</h1>
+      <p class="text-black mt-4 font-bold">Manage your account settings here.</p>
       
       <!-- Settings Form -->
-      <form>
+      <form class="shadow-lg p-[40px] bg-stone-200 h-[400px] justify-center items-center flex flex-col">
         <div class="mt-4">
           <label for="username" class="block text-sm font-semibold text-gray-800">Username</label>
           <input
             type="text"
             id="username"
             name="username"
-            class="w-full mt-2 p-2 border rounded-md"
+            class="w-full p-[10px] rounded shadow-lg" 
             placeholder="Enter new username"
-          />
+          required/>
         </div>
 
         <div class="mt-4">
@@ -263,12 +289,13 @@
             type="email"
             id="email"
             name="email"
-            class="w-full mt-2 p-2 border rounded-md"
+            class="w-full p-[10px] rounded shadow-lg"
             placeholder="Enter new email address"
-          />
+          required/>
         </div>
 
         <div class="mt-4 flex justify-end">
+          <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg mx-[7px]" >Delete account</button>
           <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Save Changes</button>
         </div>
       </form>
@@ -316,29 +343,7 @@ const userInitials = computed(() => {
 });
 
 // Sample products and customer data
-const products = [
-  {
-    id: 1,
-    name: 'Product 1',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 1.',
-    price: 29.99
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 2.',
-    price: 49.99
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 3.',
-    price: 39.99
-  }
-];
+
 
 const customers = [
   { name: 'Customer 1', email: 'customer1@example.com', lastPurchase: '2025-03-18', totalSpent: 159.99 },
@@ -349,10 +354,10 @@ const customers = [
 const menuItems = [
   { name: 'Dashboard', icon: Home, content: { name: 'Dashboard', content: 'Social Media Feed, Promotions, and Legal/Compliance' } },
   { name: 'Orders', icon: ShoppingCart, content: { name: 'Orders', title: 'Your Orders', content: 'Here are your orders and details.' } },
-  { name: 'Products', icon: List, content: { name: 'Products', title: 'Manage Products', content: 'Add and update products.' } },
+  { name: 'Products', icon: List, content: { name: 'Products', title: '', content: 'Add and update products.' } },
   { name: 'Customers', icon: Users, content: { name: 'Customers', title: 'Customer Insights', content: 'Manage and view customer data.' } },
   { name: 'Chats', icon: MessageSquareIcon, content: { name: 'Chats', title: 'Chats', content: 'Manage Notifications.' } },
-  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: 'Settings', content: 'Update your personal settings here.' } },
+  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: '', content: 'Update your personal settings here.' } },
 ];
 
 // // Set initial active content
@@ -418,50 +423,4 @@ onUnmounted(() => {
   }
 }
 /*styling chat page */
-.chat-container {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  .messages {
-    height: 400px;
-    overflow-y: auto;
-    padding-bottom: 20px;
-  }
-  .message {
-    margin: 10px 0;
-    
-  }
-  .message .sender {
-    font-weight: bold;
-  }
-  .message .content {
-    margin-top: 5px;
-    background: #f0eded;
-    padding: 10px;
-    border-radius:6px;
-  }
-  .message-user {
-    text-align: right;
-  }
-  .message-bot {
-    text-align: left;
-  }
-  input[type="text"] {
-    width: calc(100% - 80px);
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  #chatBTN {
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-  }
 </style>

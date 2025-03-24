@@ -7,6 +7,7 @@
       class="md:hidden p-4 text-gray-600 absolute top-24 right-4 text-2xl z-50">
       ☰
     </button>
+    
     <!-- Sidebar -->
     <Sidebar 
       :isOpen="sidebarOpen" 
@@ -17,7 +18,7 @@
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-      <!-- <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600 absolute right-10 text-2xl ">☰</button> -->
+      
 
       <!-- Dashboard Content -->
       <div class="p-4 sm:p-6" v-if="activeContent.name === 'Dashboard'">
