@@ -40,7 +40,7 @@
           v-for="(item, index) in menuItems"
           :key="index"
           class="flex items-center gap-2 p-3 rounded-lg cursor-pointer  hover:text-purple-700 transition duration-500"
-          @click="activeContent = item.content"
+          @click="setActiveContent(item.content)"
         >
           <component :is="item.icon" />
           {{ item.name }}
@@ -78,89 +78,9 @@
   </aside>
 
   <!-- Main Content Area -->
-  <div class="flex-1 p-6" id="maincontent">
+  <div class="w-full p-6" id="maincontent" v-show="activeContent.name !== 'Dashboard'">
     <h1 class="text-2xl font-semibold">{{ activeContent.title }}</h1>
 
-    <!-- Display Dashboard when Dashboard Section is Active -->
-    <div v-if="activeContent.name === 'Dashboard'" class="mt-6">
-      <h2 class="text-xl font-semibold">Welcome to the Dashboard</h2>
-      <p class="text-gray-600 mt-4">Here are some key insights and actions for you.</p>
-
-      <!-- Dashboard Content for Social Media Feed, Promotions, and Legal/Compliance -->
-      <div class="mt-8 space-y-6">
-        <!-- Social Media Feed -->
-        <div class="bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold text-gray-800">Social Media Feed</h3>
-          <p class="text-gray-600 mt-2">Latest posts and updates from your social media channels.</p>
-          <ul class="mt-4 space-y-2">
-            <li class="flex justify-between">
-              <span>Instagram Post 1</span>
-              <a href="#" class="text-blue-500">View</a>
-            </li>
-            <li class="flex justify-between">
-              <span>Facebook Update 1</span>
-              <a href="#" class="text-blue-500">View</a>
-            </li>
-            <li class="flex justify-between">
-              <span>Twitter Post 1</span>
-              <a href="#" class="text-blue-500">View</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Promotions and Discounts -->
-        <div class="bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold text-gray-800">Promotions and Discounts</h3>
-          <p class="text-gray-600 mt-2">Current promotions and available discounts for your products.</p>
-          <ul class="mt-4 space-y-2">
-            <li class="flex justify-between">
-              <span>Spring Sale - 20% Off</span>
-              <span class="text-green-500">Expires: 2025-03-31</span>
-            </li>
-            <li class="flex justify-between">
-              <span>Buy 2 Get 1 Free</span>
-              <span class="text-green-500">Expires: 2025-04-15</span>
-            </li>
-          </ul>
-        
-        </div>
-        
-
-        <!-- Legal and Compliance -->
-        <div class="bg-white p-4 rounded-lg shadow-md">
-          <h3 class="text-lg font-semibold text-gray-800">Legal & Compliance</h3>
-          <p class="text-gray-600 mt-2">Important legal and compliance information regarding your services.</p>
-          <ul class="mt-4 space-y-2">
-            <li>
-              <a href="#" class="text-blue-500">Terms of Service</a>
-            </li>
-            <li>
-              <a href="#" class="text-blue-500">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#" class="text-blue-500">Refund & Return Policy</a>
-            </li>
-          </ul>
-        </div>
-        <ul class="mt-4 space-y-4">
-          <li>
-            <router-link to="/tailor-dashboard/products" class="text-blue-500 hover:text-blue-700">
-              <i class="fa fa-arrow-right"></i> View Orders
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/products" class="text-blue-500 hover:text-blue-700">
-              <i class="fa fa-arrow-right"></i> Manage Client
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/customers" class="text-blue-500 hover:text-blue-700">
-              <i class="fa fa-arrow-right"></i> View Customers
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
 
     <!-- Display Orders when Orders Section is Active -->
     <div v-if="activeContent.name === 'Orders'" class="mt-6">
@@ -281,17 +201,18 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import { ref, computed, defineProps, defineEmits, onUnmounted } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 import { useAuthStore } from '@/store';
 import { CogIcon, Home, List, ShoppingCart, Users } from 'lucide-vue-next';
 
 // Props for Sidebar visibility
 const props = defineProps({
   isOpen: Boolean,
+  activeContent: Object
 });
 
 // Emit function to toggle the sidebar
-const emit = defineEmits(['toggleSidebar']);
+const emit = defineEmits(['toggleSidebar', 'update:activeContent']);
 const toggleSidebar = () => {
   emit('toggleSidebar');
 };
@@ -352,8 +273,16 @@ const menuItems = [
   { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: 'Settings', content: 'Update your personal settings here.' } },
 ];
 
-// Set initial active content
-const activeContent = ref(menuItems[0].content);
+// // Set initial active content
+// const activeContent = ref(menuItems[0].content);
+
+// set active content and handle sidebar toggle for mobile view
+const setActiveContent = (content) => {
+  emit('update:activeContent', content);
+  if (isMobile.value) {
+    toggleSidebar();
+  }
+};
 
 // Handle resizing for mobile view
 const isMobile = ref(window.innerWidth <= 768);
