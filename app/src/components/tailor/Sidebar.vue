@@ -52,6 +52,7 @@
     <div class="mt-12 border-t pt-4">
       <div class="flex items-center space-x-3">
         <div class="flex flex-col mt-8 space-y-4">
+        
         <div 
           v-if="!user.profileImage"
           class="rounded-full w-10 h-10 bg-gray-400 flex items-center justify-center text-white font-bold text-xl">
@@ -84,7 +85,7 @@
 
     <!-- Display Orders when Orders Section is Active -->
     <div v-if="activeContent.name === 'Orders'" class="mt-6">
-      <h2 class="text-xl font-semibold">Your Orders</h2>
+      
       <p class="text-gray-600 mt-4">Here are the orders you placed.</p>
       
       <!-- Sample Orders List -->
@@ -126,25 +127,89 @@
     </div>
 
     <!-- Display Products when Products Section is Active -->
-    <div v-if="activeContent.name === 'Products'" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-      <div
-        v-for="product in products"
-        :key="product.id"
-        class="border rounded-lg p-4 bg-white shadow-lg"
-      >
-        <img :src="product.image" alt="Product Image" class="w-full h-40 object-cover rounded-lg mb-4" />
-        <h2 class="text-lg font-semibold text-gray-800">{{ product.name }}</h2>
-        <p class="text-gray-600 mt-2">{{ product.description }}</p>
-        <div class="mt-4 flex justify-between items-center">
-          <span class="text-xl font-bold text-gray-900">${{ product.price }}</span>
-          <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">View Details</button>
+    <div v-if="activeContent.name === 'Products'">
+      <h1 class="text-center font-bold text-3xl">Manage Products</h1>
+      <div class="h-screen w-full flex flex-col gap-3 overflow-auto p-[30px]">
+       <div class=" flex justify-center items-center  " >
+        <form action="" class="flex flex-col p-[30px] bg-white  rounded shadow-lg">
+            <h1 class=" font-bold text-2xl text-center my-3">Post Your Designs</h1>
+            <input type="file" class="my-1 p-[10px] border border-purple-300 rounded" accept="image/jpg, image/png, image/jpeg" required >
+            <input type="text"  class="my-1 p-[10px] rounded shadow-lg border border-purple-300"  placeholder="Design" required>
+            <textarea class="resize-none my-1 p-[10px] rounded shadow-lg border border-purple-300"  name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+            <button type="submit" class="bg-purple-700 p-[10px] rounded text-white font-bold shadow-lg" >UPLOAD</button>
+
+        </form>
+       </div> 
+    
+    <div class=" shadow-lg rounded  grid grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-3    " >
+        
+        <div class=" w-[400px] bg-fuchsia-100 rounded-lg shadow-lg h-[400px]  p-[20px] m-[15px]">
+            <img
+                :src="TuxedoImage"
+                alt="tuxedo Image"
+                class="w-full  rounded-lg h-[200px] items-center justify-center "
+              />
+            <h1 class="font-bold text-2xl my-[7px]">Men's Designer Suit</h1>
+            <p class="text-sm my-[7px]">Specializing in bespoke suits and formal wear</p>
+            <div class="flex mt-[30px]">
+                <button class="bg-purple-600 w-full p-[10px] m-[10px] text-white rounded hover:bg-purple-400 hover:text-black  transition duration-500">Update</button>
+                <button class="bg-stone-600  w-full  p-[10px] m-[10px] text-white rounded hover:bg-red-600 hover:text-white  transition duration-500">Delete</button>
+            </div>
+
+
         </div>
-      </div>
+        <div  class=" w-[400px] bg-fuchsia-100 rounded-lg shadow-lg h-[400px]  p-[20px] m-[15px]">
+            <img
+                :src="Blazerimage"
+                alt="tuxedo Image"
+                class="w-full  rounded-lg h-[200px] items-center justify-center "
+              />
+            <h1 class="font-bold text-2xl my-[7px]">Women's Blazer</h1>
+            <p class="text-sm my-[7px]">High-end trench coat by women for women</p>
+            <div class="flex mt-[30px]">
+                <button class="bg-purple-600 w-full p-[10px] m-[10px] text-white rounded hover:bg-purple-400 hover:text-black  transition duration-500">Update</button>
+                <button class="bg-stone-600  w-full  p-[10px] m-[10px] text-white rounded hover:bg-red-600 hover:text-white  transition duration-500">Delete</button>
+            </div>
+
+
+        </div>
+        <div  class=" w-[400px] bg-fuchsia-100 rounded-lg shadow-lg h-[400px]  p-[20px] m-[15px]">
+            <img
+                :src="TrouserImage"
+                alt="tuxedo Image"
+                class="w-full  rounded-lg h-[200px] items-center justify-center "
+              />
+            <h1 class="font-bold text-2xl my-[7px]">Tailored Trousers</h1>
+            <p class="text-sm my-[7px]">Women tailored trousers perfect for every work day</p>
+            <div class="flex mt-[30px]">
+                <button class="bg-purple-600 w-full p-[10px] m-[10px] text-white rounded hover:bg-purple-400 hover:text-black  transition duration-500">Update</button>
+                <button class="bg-stone-600  w-full  p-[10px] m-[10px] text-white rounded hover:bg-red-600 hover:text-white  transition duration-500">Delete</button>
+            </div>
+
+
+        </div>
+        <div  class=" w-[400px] bg-fuchsia-100 rounded-lg shadow-lg h-[400px]  p-[20px] m-[15px]">
+            <img
+                :src="SuitImage"
+                alt="tuxedo Image"
+                class="w-full  rounded-lg h-[200px] items-center justify-center "
+              />
+            <h1 class="font-bold text-2xl my-[7px]">Men's Double-Breasted Coat</h1>
+            <p class="text-sm my-[7px]">A stylish, custom-tailored men's suit in charcoal gray</p>
+            <div class="flex mt-[30px]">
+                <button class="bg-purple-600 w-full p-[10px] m-[10px] text-white rounded hover:bg-purple-400 hover:text-black  transition duration-500">Update</button>
+                <button class="bg-stone-600  w-full  p-[10px] m-[10px] text-white rounded hover:bg-red-600 hover:text-white  transition duration-500">Delete</button>
+            </div>
+
+
+        </div>
+    </div> 
+</div>
     </div>
 
     <!-- Display Customers when Customers Section is Active -->
     <div v-if="activeContent.name === 'Customers'" class="mt-6">
-      <h2 class="text-xl font-semibold">Customer Insights</h2>
+    
       <p class="text-gray-600 mt-4">Here are the customer details and insights from recent interactions.</p>
       <ul class="mt-4 space-y-4">
         <li class="bg-white p-4 rounded-lg shadow-md">
@@ -161,23 +226,61 @@
         </li>
       </ul>
     </div>
+    <!-- Chat Notifications -->
+    <div v-if="activeContent.name === 'Chats'" class="mt-6">
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
+        <img
+                :src="TrouserImage"
+                alt="tuxedo Image"
+                class="w-[100px]  rounded-full h-[100px] p-[15px] "
+              />
+              <p>Hey there! i'm using whatsapp...</p>
+              <router-link to="/tailor-dashboard/Chat" class="text-white p-[10px] bg-fuchsia-700 ml-[45px] rounded">
+    View
+  </router-link>
+      </div>
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
+        <img
+                :src="Blazerimage"
+                alt="tuxedo Image"
+                class="w-[100px]  rounded-full h-[100px] p-[15px] "
+              />
+              <p>Hey there! i'm using whatsapp...</p>
+              <router-link to="/tailor-dashboard/Chat" class="text-white p-[10px] bg-fuchsia-700 ml-[45px] rounded">
+    View
+  </router-link>
+      </div>
+
+      <div class="w-[500px] bg-gray-200 h-[100px] flex items-center rounded shadow-lg m-[10px]">
+        <img
+                :src="TuxedoImage"
+                alt="tuxedo Image"
+                class="w-[100px]  rounded-full h-[100px] p-[15px] "
+              />
+              <p>Hey there! i'm using whatsapp...</p>
+              <router-link to="/tailor-dashboard/Chat" class="text-white p-[10px] bg-fuchsia-700 ml-[45px] rounded">
+    View
+  </router-link>
+      </div>
+      
+    </div>
 
     <!-- Display Settings when Settings Section is Active -->
-    <div v-if="activeContent.name === 'Settings'" class="mt-6">
-      <h2 class="text-xl font-semibold">Settings</h2>
-      <p class="text-gray-600 mt-4">Manage your account settings here.</p>
+    <div v-if="activeContent.name === 'Settings'" class="mt-6 flex justify-center items-center flex-col ">
+      <h1 class="text-center font-bold text-3xl">Settings</h1>
+      <p class="text-black mt-4 font-bold">Manage your account settings here.</p>
       
       <!-- Settings Form -->
-      <form>
+      <form class="shadow-lg p-[40px] bg-stone-200 h-[400px] justify-center items-center flex flex-col">
         <div class="mt-4">
           <label for="username" class="block text-sm font-semibold text-gray-800">Username</label>
           <input
             type="text"
             id="username"
             name="username"
-            class="w-full mt-2 p-2 border rounded-md"
+            class="w-full p-[10px] rounded shadow-lg" 
             placeholder="Enter new username"
-          />
+          required/>
         </div>
 
         <div class="mt-4">
@@ -186,12 +289,13 @@
             type="email"
             id="email"
             name="email"
-            class="w-full mt-2 p-2 border rounded-md"
+            class="w-full p-[10px] rounded shadow-lg"
             placeholder="Enter new email address"
-          />
+          required/>
         </div>
 
         <div class="mt-4 flex justify-end">
+          <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg mx-[7px]" >Delete account</button>
           <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Save Changes</button>
         </div>
       </form>
@@ -203,7 +307,11 @@
 import { RouterLink } from 'vue-router';
 import { ref, computed, onUnmounted } from 'vue';
 import { useAuthStore } from '@/store';
-import { CogIcon, Home, List, ShoppingCart, Users } from 'lucide-vue-next';
+import { CogIcon, Home, List, MessageCircle, MessageSquareIcon, MessagesSquareIcon, ShoppingCart, Users } from 'lucide-vue-next';
+import Blazerimage from"@/assets/images/card image (1).png";
+import TrouserImage from "@/assets/images/card image (2).png";
+import TuxedoImage from "@/assets/images/designersuit.png";
+import SuitImage from "@/assets/images/card image (3).png";
 
 // Props for Sidebar visibility
 const props = defineProps({
@@ -235,29 +343,7 @@ const userInitials = computed(() => {
 });
 
 // Sample products and customer data
-const products = [
-  {
-    id: 1,
-    name: 'Product 1',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 1.',
-    price: 29.99
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 2.',
-    price: 49.99
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    image: 'https://via.placeholder.com/300',
-    description: 'This is a description of Product 3.',
-    price: 39.99
-  }
-];
+
 
 const customers = [
   { name: 'Customer 1', email: 'customer1@example.com', lastPurchase: '2025-03-18', totalSpent: 159.99 },
@@ -268,9 +354,10 @@ const customers = [
 const menuItems = [
   { name: 'Dashboard', icon: Home, content: { name: 'Dashboard', content: 'Social Media Feed, Promotions, and Legal/Compliance' } },
   { name: 'Orders', icon: ShoppingCart, content: { name: 'Orders', title: 'Your Orders', content: 'Here are your orders and details.' } },
-  { name: 'Products', icon: List, content: { name: 'Products', title: 'Manage Products', content: 'Add and update products.' } },
+  { name: 'Products', icon: List, content: { name: 'Products', title: '', content: 'Add and update products.' } },
   { name: 'Customers', icon: Users, content: { name: 'Customers', title: 'Customer Insights', content: 'Manage and view customer data.' } },
-  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: 'Settings', content: 'Update your personal settings here.' } },
+  { name: 'Chats', icon: MessageSquareIcon, content: { name: 'Chats', title: 'Chats', content: 'Manage Notifications.' } },
+  { name: 'Settings', icon: CogIcon, content: { name: 'Settings', title: '', content: 'Update your personal settings here.' } },
 ];
 
 // // Set initial active content
@@ -293,6 +380,8 @@ window.addEventListener('resize', updateIsMobile);
 onUnmounted(() => {
   window.removeEventListener('resize', updateIsMobile);
 });
+
+
 </script>
 
 <style scoped>
@@ -333,4 +422,5 @@ onUnmounted(() => {
     z-index: 50;
   }
 }
+/*styling chat page */
 </style>
