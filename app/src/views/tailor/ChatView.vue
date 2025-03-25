@@ -5,7 +5,9 @@
   </template>
   
   <script setup>
-  import ChatPage from "../../pages/tailor/ChatPage.vue";
+
+  
+import ChatPage from "../../pages/tailor/ChatPage.vue";
   </script>
   
   <style lang="scss" scoped></style>

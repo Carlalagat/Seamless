@@ -14,7 +14,6 @@ import {
   FindTailorView,
   ContactView,
   MeasurementView,
-  Client1View,
   ChatView,
 } from "../views";
 import { useAuthStore } from "../store";
