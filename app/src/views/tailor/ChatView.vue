@@ -1,12 +1,12 @@
 <template>
     <div>
-      <productsPage />
+      <ChatPage />
     </div>
   </template>
   
   <script setup>
   
-import productsPage from "../../pages/tailor/productsPage.vue";
+import ChatPage from "../../pages/tailor/ChatPage.vue";
   </script>
   
   <style lang="scss" scoped></style>

@@ -14,8 +14,7 @@ import {
   FindTailorView,
   ContactView,
   MeasurementView,
-  productsView,
-  Client1View,
+  ChatView,
 } from "../views";
 import { useAuthStore } from "../store";
 
@@ -35,7 +34,7 @@ const routes = [
   { path: "/Clients", name: "clientdashboard", component: Client1View},
   {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
-  {path: "/tailor-dashboard/products", name: "products", component: productsView},
+  {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
 ];
 
 const router = createRouter({
