@@ -13,6 +13,7 @@ import ClientView from "./client/ClientView.vue";
 import TailorView from "./tailor/TailorView.vue";
 import MeasurementView from "./client/MeasurementView.vue";
 import ChatView from "./tailor/ChatView.vue";
+import Client1View from "./admin/Client1View.vue";
 
 export {
   HomeView,
@@ -30,5 +31,6 @@ export {
   TailorView,
   MeasurementView,
   ChatView,
+  Client1View,
 
 };
