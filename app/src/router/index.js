@@ -33,10 +33,10 @@ const routes = [
   { path: "/reset-password", name: "reset-password", component: ResetPasswordView },
   { path: "/admin-dashboard", name: "admin-dashboard", component: AdminView },
   { path: "/client-dashboard", name: "client-dashboard", component: ClientView},
-  { path: "/Clients", name: "clientdashboard", component: Client1View},
   {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
   {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
+  {path: "/Clients", name: "Clients", component: Client1View},
   
 ];
 
@@ -72,3 +72,5 @@ router.beforeEach(async (to) => {
 });
 
 export default router;
+
+
