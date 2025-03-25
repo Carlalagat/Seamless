@@ -15,8 +15,10 @@ import {
   ContactView,
   MeasurementView,
   ChatView,
+
 } from "../views";
 import { useAuthStore } from "../store";
+import Client1View from "../views/admin/Client1View.vue";
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
@@ -34,6 +36,7 @@ const routes = [
   {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
   {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
+  
 ];
 
 const router = createRouter({
