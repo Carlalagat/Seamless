@@ -29,5 +29,6 @@ export {
   ClientView,
   TailorView,
   MeasurementView,
-  ChatView
+  ChatView,
+
 };

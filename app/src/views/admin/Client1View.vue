@@ -1,13 +1,11 @@
 <template>
     <div>
-      <ChatPage />
+      <Clients />
     </div>
   </template>
   
   <script setup>
-
-  
-import ChatPage from "../../pages/tailor/ChatPage.vue";
+import Clients from "../../components/admin/Clients.vue";
   </script>
   
   <style lang="scss" scoped></style>
