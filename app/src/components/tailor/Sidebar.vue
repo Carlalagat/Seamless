@@ -424,3 +424,5 @@ onUnmounted(() => {
 }
 /*styling chat page */
 </style>
+
+
