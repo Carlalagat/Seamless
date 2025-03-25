@@ -36,6 +36,7 @@ const routes = [
   {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
   {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
+  {path: "/Clients", name: "Clients", component: Client1View},
   
 ];
 
