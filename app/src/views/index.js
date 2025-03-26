@@ -18,6 +18,7 @@ import Tailors1View from "./admin/Tailors1View.vue";
 import MessagesView from "./admin/MessagesView.vue";
 
 
+
 export {
   HomeView,
   AboutView,
@@ -37,6 +38,7 @@ export {
   Client1View,
   Tailors1View,
   MessagesView,
+  
 
 
 

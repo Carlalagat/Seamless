@@ -2,12 +2,19 @@
     <div class="flex flex-col h-screen bg-gray-100">
       <!-- Chat Header -->
       <div class="bg-purple-700 text-white p-4 flex items-center shadow-md">
+        <RouterLink to="/tailor-dashboard" class="flex items-center space-x-2 mx-[7px]">
+            <i class="fa fa-arrow-left"></i>
+    </RouterLink>
         <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center mr-3">
           <span class="text-xl font-bold">C</span>
         </div>
-        <div>
-          <h2 class="font-bold text-lg">Client's Name</h2>
+        <div class="flex">
+       
+    <div>
+      <h2 class="font-bold text-lg">Client's Name</h2>
           <p class="text-xs text-purple-200">Online</p>
+    </div>
+        
         </div>
         <div class="ml-auto flex space-x-3">
           <button class="p-2 rounded-full hover:bg-purple-600">
