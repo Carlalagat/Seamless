@@ -52,7 +52,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Search clients..."
+          placeholder="Search Clients..."
           class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-100"
         />
         <!-- Add Button -->
@@ -65,7 +65,7 @@
 
       <!-- Table with spaced rows -->
       <div class="overflow-hidden rounded-lg">
-        <table class="min-w-full border-separate" style="border-spacing: 0 0.5rem">
+        <table class="min-w-full border-separate" style="border-spacing: 0 0.1rem">
           <thead class="bg-purple-600">
             <tr>
               <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">ID</th>
