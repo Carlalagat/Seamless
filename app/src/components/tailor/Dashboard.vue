@@ -1,14 +1,27 @@
 <template>
+  
   <div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
+    <!-- hamburger menu button -->
+    <button 
+      @click="toggleSidebar"
+      class="md:hidden p-4 text-gray-600 absolute top-24 right-4 text-2xl z-50">
+      ☰
+    </button>
+    
     <!-- Sidebar -->
-    <Sidebar :isOpen="sidebarOpen" @toggleSidebar="toggleSidebar" />
+    <Sidebar 
+      :isOpen="sidebarOpen" 
+      @toggleSidebar="toggleSidebar" 
+      :activeContent="activeContent"
+      @update:activeContent="updateActiveContent" 
+    />
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-      <button @click="toggleSidebar" class="md:hidden p-4 text-gray-600">☰</button>
+      
 
       <!-- Dashboard Content -->
-      <div class="p-4 sm:p-6">
+      <div class="p-4 sm:p-6" v-if="activeContent.name === 'Dashboard'">
         <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Tailor Dashboard</h1>
         <p class="text-sm sm:text-base text-gray-500">Manage your orders and clients</p>
 
@@ -61,15 +74,6 @@
           </div>
         </div>
 
-        <!-- New Messages -->
-        <div class="mt-8 bg-white p-4 sm:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg sm:text-2xl font-bold text-gray-800 mb-4">New Messages</h2>
-          <ul>
-            <li v-for="message in messages" :key="message.id" class="py-2 border-t">
-              <strong>{{ message.client }}</strong>: {{ message.text }}
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -84,10 +88,16 @@ Chart.register(...registerables);
 
 const chartCanvas = ref(null);
 const sidebarOpen = ref(false);
+const activeContent = ref({ name: "Dashboard" }); 
 
 const toggleSidebar = () => {
   sidebarOpen.value = !sidebarOpen.value;
 };
+
+// Update active content
+const updateActiveContent = (newContent) => {
+  activeContent.value = newContent;
+}
 
 // Tailor-specific stats
 const stats = ref([
@@ -104,15 +114,9 @@ const recentOrders = ref([
   { id: 3, client: "Chris Brown", garment: "Casual Jacket", status: "Completed", dueDate: "March 10", statusClass: "bg-green-100 text-green-600" },
 ]);
 
-// New Messages
-const messages = ref([
-  { id: 1, client: "Alice Johnson", text: "Hey, can I change the fabric for my dress?" },
-  { id: 2, client: "Michael Lee", text: "When will my order be ready?" },
-]);
-
 // Orders Chart
 onMounted(() => {
-  if (chartCanvas.value) {
+  if (chartCanvas.value && activeContent.value.name === 'Dashboard') {
     new Chart(chartCanvas.value, {
       type: "bar",
       data: {
@@ -134,3 +138,14 @@ onMounted(() => {
   }
 });
 </script>
+
+<style scoped>
+.dashboard-container {
+  min-height: 100vh;
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+</style>

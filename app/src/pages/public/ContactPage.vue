@@ -4,24 +4,30 @@
       <h2 class="text-5xl font-bold text-black">Get In Touch</h2>
       <p class="text-gray-600 mt-4 text-xl">Have questions? We are here to help. Send us a message and we will reply as soon as possible!</p>
       
-      <form class="mt-8 space-y-6">
+      <form @submit.prevent="sendEmail" class="mt-8 space-y-6">
         <label class="block text-gray-700 font-semibold text-lg">Name</label>
-        <input type="text" placeholder="Your name" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" />
+        <input v-model="form.name" type="text" placeholder="Your name" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" required />
         
         <label class="block text-gray-700 font-semibold text-lg">Email</label>
-        <input type="email" placeholder="your@gmail.com" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" />
+        <input v-model="form.email" type="email" placeholder="your@gmail.com" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" required />
         
         <label class="block text-gray-700 font-semibold text-lg">Subject</label>
-        <input type="text" placeholder="How can we help?" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" />
+        <input v-model="form.subject" type="text" placeholder="How can we help?" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" required />
         
         <label class="block text-gray-700 font-semibold text-lg">Message</label>
-        <textarea placeholder="Your message" rows="6" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg"></textarea>
+        <textarea v-model="form.message" placeholder="Your message" rows="6" class="w-full p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg" required></textarea>
         
-        <button class="w-full bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 text-xl font-semibold">Send Message</button>
+        <button type="submit" class="w-full bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 text-xl font-semibold">
+          Send Message
+        </button>
       </form>
+
+      <p v-if="responseMessage" class="mt-4 text-lg font-semibold text-center" :class="{'text-green-600': success, 'text-red-600': !success}">
+        {{ responseMessage }}
+      </p>
     </div>
-    
-    <div class="grid grid-cols-2 gap-8 mt-10 md:mt-0 w-full md:w-2/5">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-10 md:mt-0 w-full md:w-2/5">
       <div class="bg-purple-100 p-8 rounded-lg shadow-xl flex items-center space-x-6 min-w-[280px]">
         <i class="fas fa-map-marker-alt text-purple-600 text-3xl"></i>
         <div class="whitespace-normal">
@@ -55,8 +61,31 @@
 </template>
 
 <script>
+import emailjs from "emailjs-com";
+
 export default {
-  name: 'ContactPage',
+  data() {
+    return {
+      form: { name: "", email: "", subject: "", message: "" },
+      responseMessage: "",
+      success: false,
+    };
+  },
+  methods: {
+    sendEmail() {
+      emailjs
+        .send("service_exl3s82", "template_s5jcnqc", this.form, "axpEegaKN-SXy50vX")
+        .then(() => {
+          this.responseMessage = "Message sent successfully!";
+          this.success = true;
+          this.form = { name: "", email: "", subject: "", message: "" }; // Reset form
+        })
+        .catch(() => {
+          this.responseMessage = "Failed to send message.";
+          this.success = false;
+        });
+    },
+  },
 };
 </script>
 

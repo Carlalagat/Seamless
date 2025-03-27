@@ -14,8 +14,16 @@ import {
   FindTailorView,
   ContactView,
   MeasurementView,
+  ChatView,
+  MessagesView,
+  
+
 } from "../views";
 import { useAuthStore } from "../store";
+import Client1View from "../views/admin/Client1View.vue";
+import Tailors1View from "../views/admin/Tailors1View.vue";
+
+
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
@@ -32,6 +40,12 @@ const routes = [
   { path: "/client-dashboard", name: "client-dashboard", component: ClientView},
   {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
   {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
+  {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
+  {path: "/Clients", name: "Clients", component: Client1View},
+  {path: "/Tailors", name: "Tailors", component: Tailors1View},
+  {path: "/Messages", name: "Messages", component: MessagesView},
+
+  
 ];
 
 const router = createRouter({
@@ -66,3 +80,5 @@ router.beforeEach(async (to) => {
 });
 
 export default router;
+
+
