@@ -4,9 +4,12 @@
   >
     <!-- Logo and Title -->
     <div class="flex items-center space-x-2">
-      <!-- <img :src="Logo" alt="Logo" class="w-12" /> -->
-      <img :src="logo" alt="SeamLess Logo" class="h-6 mb-2" />
-      
+      <RouterLink 
+        to="/" 
+        class="cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:opacity-80"
+      >
+        <img :src="logo" alt="SeamLess Logo" class="h-6 mb-2" />
+      </RouterLink>
     </div>
 
     <!-- Desktop Navigation -->
@@ -48,29 +51,15 @@
           Find Tailors
         </RouterLink>
       </li>
-<!-- Desktop Navigation for Measurement -->
-<li>
-
-  <RouterLink
-    to="/measurements"
-    class="hover:text-purple-600"
-    active-class="text-purple-600 font-bold"
-  >
-    Measurements
-  </RouterLink>
-</li>
-
-<!-- In Mobile Menu Dropdown for Measurement -->
-<!-- <li>
-  <RouterLink
-    to="/measurements"
-    class="hover:text-purple-600"
-    active-class="text-purple-600 font-bold"
-    @click="toggleMobileMenu"
-  >
-    Measurements
-  </RouterLink>
-</li> -->
+      <li>
+        <RouterLink
+          to="/measurements"
+          class="hover:text-purple-600"
+          active-class="text-purple-600 font-bold"
+        >
+          Measurements
+        </RouterLink>
+      </li>
       <li>
         <RouterLink
           to="/contact"
@@ -162,17 +151,16 @@
             Find Tailors
           </RouterLink>
         </li>
-
         <li>
-
-<RouterLink
-  to="/measurements"
-  class="hover:text-purple-600"
-  active-class="text-purple-600 font-bold"
->
-  Measurements
-</RouterLink>
-</li>
+          <RouterLink
+            to="/measurements"
+            class="hover:text-purple-600"
+            active-class="text-purple-600 font-bold"
+            @click="toggleMobileMenu"
+          >
+            Measurements
+          </RouterLink>
+        </li>
         <li>
           <RouterLink
             to="/contact"
@@ -214,7 +202,6 @@
 <script setup>
 import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
-// import Logo from "@/assets/images/Logo.png";
 import logo from '@/assets/SeamLess..png';
 import { useAuthStore } from "@/store"; 	
 
@@ -241,5 +228,8 @@ const logout = () => {
 </script>
 
 <style scoped>
-/* Additional custom styles if needed */
+/* Additional hover and transition effects */
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>

@@ -106,6 +106,7 @@
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowfullscreen
+              title="Measurement Tutorial"
             ></iframe>
           </div>
           
@@ -183,11 +184,11 @@ const steps = [
   },
 ];
 
-// Video URLs for each measurement type
+// Updated Video URLs with embed links
 const videoUrls = {
-  'Chest': 'https://www.youtube.com/embed/example_chest',
-  'Waist': 'https://www.youtube.com/embed/example_waist',
-  'Shoulders': 'https://www.youtube.com/embed/example_shoulders'
+  'Chest': 'https://www.youtube.com/embed/RnpOtJJ6D8Q',
+  'Waist': 'https://www.youtube.com/embed/Pd68SDld1mY',
+  'Shoulders': 'https://www.youtube.com/embed/1F2oC9ofGFE'
 };
 
 const activeStep = ref(0);
