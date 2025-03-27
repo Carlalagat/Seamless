@@ -4,7 +4,7 @@
   >
     <!-- Logo and Title -->
     <div class="flex items-center space-x-2">
-      <img :src="Logo" alt="Logo" class="w-12" />
+      <!-- <img :src="Logo" alt="Logo" class="w-12" /> -->
       <img :src="logo" alt="SeamLess Logo" class="h-6 mb-2" />
       
     </div>
@@ -214,9 +214,9 @@
 <script setup>
 import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
-import Logo from "@/assets/images/Logo.png";
+// import Logo from "@/assets/images/Logo.png";
 import logo from '@/assets/SeamLess..png';
-import { useAuthStore } from "@/store";
+import { useAuthStore } from "@/store"; 	
 
 const authStore = useAuthStore();
 const mobileMenuOpen = ref(false);
