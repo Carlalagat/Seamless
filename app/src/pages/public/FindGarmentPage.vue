@@ -35,11 +35,11 @@
   
   
     <!-- Cards Section -->
-    <div class="p-10 flex flex-wrap gap-5 items-center justify-center">
+    <div class="p-10 flex flex-wrap gap-10 items-center justify-center">
       <div
         v-for="(card, index) in cards"
         :key="index"
-        class="bg-[#faefff] rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]"
+        class="bg-[#faefff] rounded-lg p-6 flex flex-col gap-6 items-center shadow-md w-[250px] md:w-[300px] lg:w-[324px]"
       >
         <img
           :src="card.image"
