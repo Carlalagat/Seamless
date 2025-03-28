@@ -4,33 +4,47 @@
       <!-- Contact Form Section -->
       <div class="w-full lg:w-2/3 xl:w-3/5 bg-white p-6 md:p-10 lg:p-12 rounded-lg shadow-lg">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">Get In Touch</h2>
-        <p class="text-gray-600 text-base md:text-xl mb-6 lg:mb-8">Have questions? We are here to help. Send us a message and we will reply as soon as possible!</p>
-        
-        <form class="space-y-4 md:space-y-6">
+        <p class="text-gray-600 text-base md:text-xl mb-6 lg:mb-8">
+          Have questions? We are here to help. Send us a message and we will reply as soon as possible!
+        </p>
+
+        <form @submit.prevent="sendEmail" class="space-y-4 md:space-y-6">
           <div>
             <label class="block text-gray-700 font-semibold text-base md:text-lg mb-2">Name</label>
-            <input type="text" placeholder="Your name" class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+            <input v-model="form.name" type="text" placeholder="Your name" required
+              class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
           </div>
-          
+
           <div>
             <label class="block text-gray-700 font-semibold text-base md:text-lg mb-2">Email</label>
-            <input type="email" placeholder="your@gmail.com" class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+            <input v-model="form.email" type="email" placeholder="your@gmail.com" required
+              class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
           </div>
-          
+
           <div>
             <label class="block text-gray-700 font-semibold text-base md:text-lg mb-2">Subject</label>
-            <input type="text" placeholder="How can we help?" class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+            <input v-model="form.subject" type="text" placeholder="How can we help?" required
+              class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500" />
           </div>
-          
+
           <div>
             <label class="block text-gray-700 font-semibold text-base md:text-lg mb-2">Message</label>
-            <textarea placeholder="Your message" rows="6" class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+            <textarea v-model="form.message" placeholder="Your message" rows="6" required
+              class="w-full p-3 md:p-4 border rounded-lg bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
           </div>
-          
-          <button class="w-full bg-purple-600 text-white p-3 md:p-4 rounded-lg hover:bg-purple-700 font-semibold transition-colors duration-300">Send Message</button>
+
+          <button type="submit"
+            class="w-full bg-purple-600 text-white p-3 md:p-4 rounded-lg hover:bg-purple-700 font-semibold transition-colors duration-300">
+            Send Message
+          </button>
         </form>
+
+        <p v-if="responseMessage" class="mt-4 text-lg font-semibold text-center"
+          :class="{ 'text-green-600': success, 'text-red-600': !success }">
+          {{ responseMessage }}
+        </p>
       </div>
-      
+
       <!-- Contact Information Section -->
       <div class="w-full lg:w-1/3 xl:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6">
         <div class="bg-purple-100 p-5 md:p-6 rounded-lg shadow-xl flex items-center space-x-4">
@@ -67,8 +81,31 @@
 </template>
 
 <script>
+import emailjs from "emailjs-com";
+
 export default {
-  name: 'ContactPage',
+  data() {
+    return {
+      form: { name: "", email: "", subject: "", message: "" },
+      responseMessage: "",
+      success: false,
+    };
+  },
+  methods: {
+    sendEmail() {
+      emailjs
+        .send("service_exl3s82", "template_s5jcnqc", this.form, "axpEegaKN-SXy50vX")
+        .then(() => {
+          this.responseMessage = "Message sent successfully!";
+          this.success = true;
+          this.form = { name: "", email: "", subject: "", message: "" }; // Reset form
+        })
+        .catch(() => {
+          this.responseMessage = "Failed to send message.";
+          this.success = false;
+        });
+    },
+  },
 };
 </script>
 
