@@ -54,7 +54,7 @@
     <div class="relative z-10 bg-slate-100 text-white mt-16 ml-3 h-full w-64 rounded-lg shadow-lg overflow-auto">
   <!-- Title Section -->
   <div class="flex justify-between items-center p-4 border-b ">
-    <button class="bg-purple-500 text-white px-6 py-1 rounded">+ Compose</button>
+    <button class="bg-purple-500 text-white px-6 py-1 rounded"><strong>+</strong> Compose</button>
   </div>
 
   <!-- Email Section -->
@@ -62,40 +62,41 @@
   <!-- Repeated list item -->
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">Tenma</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">Tenma</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">Hoop</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">Hoop</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">Ashton</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">Ashton</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">Hall</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">Hall</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">Lebron</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">Lebron</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-8">James</span>
+    <span class="text-black mr-8 w-32 text-left ml-1">James</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
   <div class="flex items-center justify-between">
     <i class="fa fa-inbox text-purple-500"></i>
-    <span class="text-black mr-5">Dr.Tenma</span>
+    <span class="text-black mr-5 w-32 text-left ml-1">Dr.Tenma</span>
     <span class="bg-purple-300 text-white px-2 py-1 rounded text-sm">1253</span>
   </div>
 </div>
+
 
 
   <!-- Labels Section -->
@@ -124,7 +125,7 @@
 
 
     <div class="relative z-10 bg-slate-100 mt-16 ml-3 h-full w-full  rounded">
-      <h1 class="text-black ml-1">tried</h1>
+      
     </div>
     
 
