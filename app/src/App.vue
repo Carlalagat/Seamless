@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-white">
     <Header v-if="isPublicRoute" />
-    <div class="mt-4">
+    <div>
       <RouterView />
     </div>
     <Footer v-if="isPublicRoute" />
@@ -14,7 +14,7 @@ import { computed } from "vue";
 import Header from "./components/common/Header.vue";
 import Footer from "./components/common/Footer.vue";
 
-// List of public pages (matching the same list in your router)
+// List of public pages
 const publicPages = [
   "/",
   "/about",
