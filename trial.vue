@@ -27,10 +27,7 @@
 
         <!-- Confirm Password -->
         <div>
-          <label
-            for="confirmPassword"
-            class="block text-sm font-medium text-gray-700"
-          >
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">
             Confirm Password
           </label>
           <input
@@ -41,15 +38,10 @@
             :class="{ 'border-red-500': v$.confirmPassword.$error }"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
-          <div
-            v-if="v$.confirmPassword.$error"
-            class="mt-1 text-red-500 text-xs"
-          >
-            <span
-              v-for="error in v$.confirmPassword.$errors"
-              :key="error.$uid"
-              >{{ error.$message }}</span
-            >
+          <div v-if="v$.confirmPassword.$error" class="mt-1 text-red-500 text-xs">
+            <span v-for="error in v$.confirmPassword.$errors" :key="error.$uid">{{
+              error.$message
+            }}</span>
           </div>
         </div>
 
@@ -86,7 +78,7 @@
       </div>
     </div>
   </div>
-
+  
   <NotificationPopup
     v-model="showSuccessPopup"
     title="Password Reset"
@@ -120,14 +112,14 @@ const formData = reactive({
 });
 
 const rules = computed(() => ({
-  newPassword: {
-    required,
-    minLength: minLength(8),
+  newPassword: { 
+    required, 
+    minLength: minLength(8) 
   },
-  confirmPassword: {
-    required,
-    sameAsPassword: sameAs(formData.newPassword),
-  },
+  confirmPassword: { 
+    required, 
+    sameAsPassword: sameAs(formData.newPassword) 
+  }
 }));
 
 const v$ = useVuelidate(rules, formData);
@@ -144,16 +136,15 @@ const handleResetPassword = async () => {
 
   loading.value = true;
   try {
-    const response = await post("api/auth/reset-password", {
-      token,
-      newPassword: formData.newPassword,
+    const response = await post("api/auth/reset-password", { 
+      token, 
+      newPassword: formData.newPassword 
     });
-
+    
     // Use the auth store to manage notification
     authStore.showNotification = true;
-    authStore.notificationMessage =
-      response.data.message || "Password reset successfully!";
-
+    authStore.notificationMessage = response.data.message || "Password reset successfully!";
+    
     showSuccessPopup.value = true;
   } catch (err) {
     console.error("Reset password error:", err);

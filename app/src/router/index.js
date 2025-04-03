@@ -16,14 +16,10 @@ import {
   MeasurementView,
   ChatView,
   MessagesView,
-  
-
 } from "../views";
 import { useAuthStore } from "../store";
 import Client1View from "../views/admin/Client1View.vue";
 import Tailors1View from "../views/admin/Tailors1View.vue";
-
-
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
@@ -33,19 +29,37 @@ const routes = [
   { path: "/contact", name: "contact", component: ContactView },
   { path: "/login", name: "login", component: LoginView },
   { path: "/register", name: "register", component: RegisterView },
-  { path: "/verify/:token", name: "verify-account", component: VerifyAccountView },
-  { path: "/forgot-password", name: "forgot-password", component: ForgotPasswordView },
-  { path: "/reset-password", name: "reset-password", component: ResetPasswordView },
+  {
+    path: "/verify",
+    name: "verify-account",
+    component: VerifyAccountView,
+  },
+  {
+    path: "/forgot-password",
+    name: "forgot-password",
+    component: ForgotPasswordView,
+  },
+  {
+    path: "/reset-password",
+    name: "reset-password",
+    component: ResetPasswordView,
+  },
   { path: "/admin-dashboard", name: "admin-dashboard", component: AdminView },
-  { path: "/client-dashboard", name: "client-dashboard", component: ClientView},
-  {path: '/measurements' , name: 'Measurements', component: MeasurementView,},
-  {path: "/tailor-dashboard", name: "tailor-dashboard", component: TailorView},
-  {path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView},
-  {path: "/Clients", name: "Clients", component: Client1View},
-  {path: "/Tailors", name: "Tailors", component: Tailors1View},
-  {path: "/Messages", name: "Messages", component: MessagesView},
-
-  
+  {
+    path: "/client-dashboard",
+    name: "client-dashboard",
+    component: ClientView,
+  },
+  { path: "/measurements", name: "Measurements", component: MeasurementView },
+  {
+    path: "/tailor-dashboard",
+    name: "tailor-dashboard",
+    component: TailorView,
+  },
+  { path: "/tailor-dashboard/Chat", name: "Chat", component: ChatView },
+  { path: "/Clients", name: "Clients", component: Client1View },
+  { path: "/Tailors", name: "Tailors", component: Tailors1View },
+  { path: "/Messages", name: "Messages", component: MessagesView },
 ];
 
 const router = createRouter({
@@ -66,7 +80,7 @@ router.beforeEach(async (to) => {
     "/find-tailors",
     "/forgot-password",
     "/reset-password",
-    "/verify/:token",
+    "/verify",
     "/measurements",
   ];
   const authRequired = !publicPages.includes(to.path);
@@ -80,5 +94,3 @@ router.beforeEach(async (to) => {
 });
 
 export default router;
-
-
