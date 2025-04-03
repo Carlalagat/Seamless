@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1 class="text-2xl font-semibold mb-6 text-center">Orders</h1>
+      <h1 class="text-2xl font-semibold mb-6">Orders</h1>
       <div class="flex justify-between items-center mb-6">
         <div>
           <p class="text-gray-500">Review and track your recent purchases</p>
