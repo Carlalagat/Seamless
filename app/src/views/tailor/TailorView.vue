@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Dashboard />
+    <DashboardPage />
   </div>
 </template>
 
 <script setup>
-import Dashboard from "@/components/tailor/Dashboard.vue";
+import DashboardPage from "@/pages/tailor/DashboardPage.vue";
 </script>
 
 <style lang="scss" scoped></style>
