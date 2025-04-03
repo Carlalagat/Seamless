@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen flex items-center justify-center"
-  >
+  <div class="min-h-screen flex items-center justify-center">
     <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
       <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
         Create an Account
@@ -111,7 +109,8 @@
         <div>
           <button
             type="submit"
-            class="w-full py-2 px-4 bg-purple-600 text-white font-medium rounded-md hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            :disabled="loading"
+            class="w-full py-2 px-4 bg-purple-600 text-white font-medium rounded-md hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Sign Up
           </button>
@@ -139,6 +138,12 @@
       </div>
     </div>
   </div>
+  <NotificationPopup
+    v-model="showSuccessPopup"
+    title="Verify Your Email"
+    :message="authStore.notificationMessage"
+    @close="handlePopupClose"
+  />
 </template>
 
 <script setup>
@@ -146,8 +151,12 @@ import { reactive, ref, computed, onMounted } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 import { useAuthStore } from "@/store";
+import NotificationPopup from "../utils/NotificationPopup.vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const authStore = useAuthStore();
+const showSuccessPopup = ref(false);
 
 const formData = reactive({
   username: "",
@@ -181,10 +190,17 @@ const onSubmit = async () => {
   loading.value = true;
   try {
     await authStore.signup(formData);
+    if (!authStore.error) {
+      showSuccessPopup.value = true;
+    }
   } catch (err) {
     console.error("Signup error:", err);
   } finally {
     loading.value = false;
   }
+};
+
+const handlePopupClose = () => {
+  router.push("/login");
 };
 </script>

@@ -16,6 +16,8 @@ export const useAuthStore = defineStore("auth", () => {
   const refreshToken = ref(useLocalStorage("refresh-token", null));
   const returnUrl = ref(null);
   const error = ref(null);
+  const showNotification = ref(false);
+  const notificationMessage = ref("");
   let login;
 
   /** Signup method for creating a new user (remote instance) */
@@ -23,8 +25,9 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       const response = await post("api/auth/signup", formData);
       console.log("Signup successful:", response.data);
-      /** Redirect to login page after signup: */
-      router.push("/login");
+      showNotification.value = true;
+      notificationMessage.value =
+        "Verification email sent! Please check your inbox.";
     } catch (err) {
       console.error("Signup error:", err);
       error.value = err.response
@@ -41,7 +44,7 @@ export const useAuthStore = defineStore("auth", () => {
       console.log("Remote login response:", response);
       /** Store the user object */
       user.value = response.data.user;
-      
+
       /** Store the access token */
       access_token.value = response.data.token;
       /** Store the refresh token, if provided */
@@ -104,6 +107,8 @@ export const useAuthStore = defineStore("auth", () => {
     refreshToken,
     returnUrl,
     error,
+    showNotification,
+    notificationMessage,
     test,
     login,
     signup,
