@@ -1,6 +1,6 @@
 <template>
   <div class="profile-content">
-    <h1 class="text-2xl font-semibold mb-6 text-center">My Profile</h1>
+    <h1 class="text-2xl font-semibold mb-6">My Profile</h1>
     <div class="bg-white rounded-lg shadow-md p-6 max-w-3xl mx-auto">
       <div class="flex flex-col md:flex-row gap-6">
         <div class="flex flex-col items-center">

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1 class="text-2xl font-semibold mb-6 text-center">Customers</h1>
+      <h1 class="text-2xl font-semibold mb-6">Customers</h1>
       <div class="mb-8">
         <p class="text-gray-500 mt-1">View and manage your customer relationships</p>
       </div>

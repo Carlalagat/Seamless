@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Chats</h2>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Chats</h2>
       <div class="space-y-4">
         <!-- Chat Item 1 -->
         <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 p-4 max-w-2xl mx-auto">
