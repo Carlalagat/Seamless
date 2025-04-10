@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import MeasurementPage from '@/components/client/MeasurementPage.vue';
+import MeasurementPage from "@/components/client/MeasurementPage.vue";
 </script>

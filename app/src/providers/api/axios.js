@@ -21,7 +21,7 @@ axiosInstance.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 /** Handle Forbidden and Unauthorized errors with refresh token handling */
@@ -56,7 +56,7 @@ axiosInstance.interceptors.response.use(
           "/api/auth/refresh-token",
           {
             refreshToken: authStore.refreshToken,
-          }
+          },
         );
 
         /** Update tokens in both the store and local storage */
@@ -87,7 +87,7 @@ axiosInstance.interceptors.response.use(
       console.log("Access forbidden. Logging out...");
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

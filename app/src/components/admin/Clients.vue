@@ -6,7 +6,9 @@
 
   <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="text-sm w-1/5 md:w-[16%] lg:w-[10%] w-70 bg-purple-100 p-4 flex flex-col items-center md:items-start rounded mt-1">
+    <div
+      class="text-sm w-1/5 md:w-[16%] lg:w-[10%] w-70 bg-purple-100 p-4 flex flex-col items-center md:items-start rounded mt-1"
+    >
       <RouterLink
         to="/admin-dashboard"
         class="bg-purple-500 text-white py-2 px-1 rounded my-2 mx-1 w-full flex flex-col md:flex-row items-center text-sm md:text-base"
@@ -59,21 +61,47 @@
         <button
           @click="openAddClientModal"
           class="ml-4 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 fa fa-add -xl"
-        >
-        </button>
+        ></button>
       </div>
 
       <!-- Table with spaced rows -->
       <div class="overflow-hidden rounded-lg">
-        <table class="min-w-full border-separate" style="border-spacing: 0 0.1rem">
+        <table
+          class="min-w-full border-separate"
+          style="border-spacing: 0 0.1rem"
+        >
           <thead class="bg-purple-600">
             <tr>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">ID</th>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">Username</th>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">Email</th>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">Status</th>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">Edit</th>
-              <th class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider">Delete</th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                ID
+              </th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                Username
+              </th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                Email
+              </th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                Status
+              </th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                Edit
+              </th>
+              <th
+                class="px-6 py-3 text-left text-sm font-semibold text-white tracking-wider"
+              >
+                Delete
+              </th>
             </tr>
           </thead>
           <tbody class="bg-white">
@@ -82,12 +110,37 @@
               :key="i"
               class="hover:bg-gray-50 transition-colors duration-200 bg-white shadow-sm hover:shadow-md"
             >
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900">{{ i }}</td>
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900">User{{ i }}</td>
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900">user{{ i }}@example.com</td>
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm" :class="getStatusClass(i)">{{ getStatus(i) }}</td>
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-blue-500 hover:text-blue-700 cursor-pointer">Edit</td>
-              <td class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-red-500 hover:text-red-700 cursor-pointer">Delete</td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900"
+              >
+                {{ i }}
+              </td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900"
+              >
+                User{{ i }}
+              </td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-gray-900"
+              >
+                user{{ i }}@example.com
+              </td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm"
+                :class="getStatusClass(i)"
+              >
+                {{ getStatus(i) }}
+              </td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-blue-500 hover:text-blue-700 cursor-pointer"
+              >
+                Edit
+              </td>
+              <td
+                class="px-6 py-4 border-b border-gray-100 whitespace-nowrap text-sm text-red-500 hover:text-red-700 cursor-pointer"
+              >
+                Delete
+              </td>
             </tr>
           </tbody>
         </table>
@@ -95,10 +148,14 @@
 
       <!-- Pagination -->
       <div class="flex justify-end mt-4">
-        <button class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 mr-2">
+        <button
+          class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 mr-2"
+        >
           Previous
         </button>
-        <button class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600">
+        <button
+          class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600"
+        >
           Next
         </button>
       </div>
@@ -114,7 +171,9 @@
       <h3 class="text-xl font-semibold mb-4">Add New Client</h3>
       <form @submit.prevent="addClient">
         <div class="mb-4">
-          <label for="username" class="block text-sm font-semibold">Username</label>
+          <label for="username" class="block text-sm font-semibold"
+            >Username</label
+          >
           <input
             v-model="newClient.username"
             type="text"
@@ -170,38 +229,41 @@ export default {
   },
   computed: {
     filteredData() {
-      return this.data.filter((id) =>
-        (`User${id}`.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-          `user${id}@example.com`.toLowerCase().includes(this.searchQuery.toLowerCase()))
+      return this.data.filter(
+        (id) =>
+          `User${id}`.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          `user${id}@example.com`
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()),
       );
     },
   },
   methods: {
     getStatus(i) {
-      const statuses = ['Active', 'Inactive', 'Pending'];
+      const statuses = ["Active", "Inactive", "Pending"];
       return statuses[i % statuses.length];
     },
     getStatusClass(i) {
       const status = this.getStatus(i);
-      if (status === 'Active') return 'text-green-500';
-      if (status === 'Inactive') return 'text-red-500';
-      return 'text-yellow-500';
+      if (status === "Active") return "text-green-500";
+      if (status === "Inactive") return "text-red-500";
+      return "text-yellow-500";
     },
     openAddClientModal() {
       this.showAddClientModal = true;
     },
     closeAddClientModal() {
       this.showAddClientModal = false;
-      this.newClient.username = '';
-      this.newClient.email = '';
+      this.newClient.username = "";
+      this.newClient.email = "";
     },
     addClient() {
       if (this.newClient.username && this.newClient.email) {
-        console.log('New Client Added:', this.newClient);
+        console.log("New Client Added:", this.newClient);
         this.data.push(this.data.length + 1);
         this.closeAddClientModal();
       } else {
-        alert('Please fill in both fields.');
+        alert("Please fill in both fields.");
       }
     },
   },

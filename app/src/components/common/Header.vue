@@ -4,11 +4,15 @@
   >
     <!-- Logo and Title -->
     <div class="flex items-center space-x-2">
-      <RouterLink 
-        to="/" 
+      <RouterLink
+        to="/"
         class="cursor-pointer transform transition-all duration-500 hover:scale-110 hover:rotate-3 hover:shadow-lg"
       >
-        <img :src="logo" alt="SeamLess Logo" class="h-6 mb-2 transition-transform" />
+        <img
+          :src="logo"
+          alt="SeamLess Logo"
+          class="h-6 mb-2 transition-transform"
+        />
       </RouterLink>
     </div>
 
@@ -22,7 +26,9 @@
           :exact="route.exact"
         >
           {{ route.name }}
-          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+          <span
+            class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+          ></span>
         </RouterLink>
       </li>
     </ul>
@@ -39,7 +45,10 @@
         </RouterLink>
       </template>
       <template v-else>
-        <span class="mr-4 text-gray-800 hover:text-purple-600 transition-colors">{{ userDisplayName }}</span>
+        <span
+          class="mr-4 text-gray-800 hover:text-purple-600 transition-colors"
+          >{{ userDisplayName }}</span
+        >
         <button
           @click="logout"
           class="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-6 rounded-xl hover:from-red-600 hover:to-red-800 transition-all duration-500 transform hover:scale-105 hover:shadow-lg"
@@ -108,19 +117,19 @@
 <script setup>
 import { ref, computed } from "vue";
 import { RouterLink } from "vue-router";
-import logo from '@/assets/SeamLess..png';
-import { useAuthStore } from "@/store"; 	
+import logo from "@/assets/SeamLess..png";
+import { useAuthStore } from "@/store";
 
 const authStore = useAuthStore();
 const mobileMenuOpen = ref(false);
 
 const routes = [
-  { path: '/', name: 'Home', exact: true },
-  { path: '/about', name: 'About Us' },
-  { path: '/find-garments', name: 'Find Garments' },
-  { path: '/find-tailors', name: 'Find Tailors' },
-  { path: '/measurements', name: 'Measurements' },
-  { path: '/contact', name: 'Contact Us' }
+  { path: "/", name: "Home", exact: true },
+  { path: "/about", name: "About Us" },
+  { path: "/find-garments", name: "Find Garments" },
+  { path: "/find-tailors", name: "Find Tailors" },
+  { path: "/measurements", name: "Measurements" },
+  { path: "/contact", name: "Contact Us" },
 ];
 
 const toggleMobileMenu = () => {

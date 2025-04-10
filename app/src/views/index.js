@@ -17,8 +17,6 @@ import Client1View from "./admin/Client1View.vue";
 import Tailors1View from "./admin/Tailors1View.vue";
 import MessagesView from "./admin/MessagesView.vue";
 
-
-
 export {
   HomeView,
   AboutView,
@@ -28,7 +26,7 @@ export {
   RegisterView,
   LoginView,
   ForgotPasswordView,
-  ResetPasswordView,  
+  ResetPasswordView,
   VerifyAccountView,
   AdminView,
   ClientView,
@@ -38,10 +36,4 @@ export {
   Client1View,
   Tailors1View,
   MessagesView,
-  
-
-
-
 };
-
-
