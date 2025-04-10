@@ -76,7 +76,7 @@
             class="flex items-center justify-between cursor-pointer hover:bg-purple-200 p-2 rounded-lg"
             @click="selectUser(user)"
           >
-            <i class="fa fa-inbox text-purple-500"></i>
+            <i class="fa fa-user text-purple-500"></i>
             <span class="flex-1 text-left ml-2 truncate">{{ user.name }}</span>
             <span class="bg-purple-300 text-white px-3 py-1 rounded text-sm">{{
               user.messages.length
@@ -85,7 +85,7 @@
         </div>
 
         <!-- Filter Section -->
-        <div class="mt-6 space-y-3">
+        <div class="mt-6 space-y-3 ml-2">
           <h2 class="text-sm font-semibold">Filter by Label</h2>
           <div class="filter-option" @click="filterBy('tailor')">
             <span class="indicator bg-teal-500"></span>
