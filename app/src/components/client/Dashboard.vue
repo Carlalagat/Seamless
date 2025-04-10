@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-gray-100 p-8">
     <div class="max-w-4xl mx-auto bg-white shadow rounded p-8">
       <div class="flex justify-between items-center mb-4">
-      <h1 class="text-3xl font-bold mb-4">Client Dashboard</h1>
-      <button 
+        <h1 class="text-3xl font-bold mb-4">Client Dashboard</h1>
+        <button
           @click="logout"
           class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
         >

@@ -1,10 +1,16 @@
 <template>
   <!-- Header Section -->
   <div class="flex flex-col justify-between p-8 bg-white">
-    <div class="flex mx-auto max-w-7xl max-md:flex-col-reverse max-md:gap-6 gap-2 justify-between w-full">
-      <h1 class="text-4xl font-bold text-gray-900">Find your Perfect Garments</h1>
+    <div
+      class="flex mx-auto max-w-7xl max-md:flex-col-reverse max-md:gap-6 gap-2 justify-between w-full"
+    >
+      <h1 class="text-4xl font-bold text-gray-900">
+        Find your Perfect Garments
+      </h1>
       <div class="relative w-80">
-        <div class="flex items-center gap-2 border-2 border-purple-300 rounded-lg px-4 py-2">
+        <div
+          class="flex items-center gap-2 border-2 border-purple-300 rounded-lg px-4 py-2"
+        >
           <input
             v-model="searchQuery"
             type="text"
@@ -14,21 +20,33 @@
             @blur="hideDropdown"
           />
           <button @click="searchGarment">
-            <img src="../../assets/images/search-icon.png" alt="Search" class="w-4 h-4" />
+            <img
+              src="../../assets/images/search-icon.png"
+              alt="Search"
+              class="w-4 h-4"
+            />
           </button>
         </div>
 
         <!-- Dropdown List -->
-        <ul v-if="showDropdown" class="absolute w-full bg-white shadow-lg mt-2 rounded-lg border max-h-60 overflow-auto">
-          <li 
-            v-for="(card, index) in filteredCards" 
-            :key="index" 
+        <ul
+          v-if="showDropdown"
+          class="absolute w-full bg-white shadow-lg mt-2 rounded-lg border max-h-60 overflow-auto"
+        >
+          <li
+            v-for="(card, index) in filteredCards"
+            :key="index"
             class="p-2 hover:bg-gray-200 cursor-pointer text-gray-800"
             @mousedown="selectItem(card.title)"
           >
             {{ card.title }}
           </li>
-          <li v-if="filteredCards.length === 0" class="p-2 text-gray-600 text-center">No results found</li>
+          <li
+            v-if="filteredCards.length === 0"
+            class="p-2 text-gray-600 text-center"
+          >
+            No results found
+          </li>
         </ul>
       </div>
     </div>
@@ -49,7 +67,10 @@
       :key="index"
       class="bg-[#faefff] rounded-lg p-6 flex flex-col gap-4 items-center shadow-md w-[350px] md:w-[400px] lg:w-[424px]"
     >
-      <img :src="card.image" class="rounded-lg w-[90%] h-[180px] object-cover" />
+      <img
+        :src="card.image"
+        class="rounded-lg w-[90%] h-[180px] object-cover"
+      />
       <div class="flex flex-col gap-2 w-[90%]">
         <div class="text-black text-lg font-medium">{{ card.title }}</div>
         <div class="flex items-center gap-2">
@@ -60,7 +81,9 @@
             width="20px"
             fill="#FFD700"
           >
-            <path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z" />
+            <path
+              d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+            />
           </svg>
           <div class="text-black text-sm">{{ card.reviewText }}</div>
         </div>
@@ -115,13 +138,15 @@ export default {
           image: "../src/assets/images/card image (3).png",
           title: "Men's Double-Breasted Coat",
           reviewText: "4.9 (124 reviews)",
-          description: "A stylish, custom-tailored men's suit in charcoal gray.",
+          description:
+            "A stylish, custom-tailored men's suit in charcoal gray.",
         },
         {
           image: "../src/assets/images/card image (4).png",
           title: "Burgundy Power",
           reviewText: "4.9 (124 reviews)",
-          description: "A beautifully tailored women's blazer in deep burgundy.",
+          description:
+            "A beautifully tailored women's blazer in deep burgundy.",
         },
         {
           image: "../src/assets/images/card image (5).png",
@@ -133,7 +158,8 @@ export default {
           image: "../src/assets/images/card image (6).png",
           title: "Structured Tailored Jumpsuit",
           reviewText: "4.9 (124 reviews)",
-          description: "Elegant fitted jumpsuit with rich fabrics and modern tailoring.",
+          description:
+            "Elegant fitted jumpsuit with rich fabrics and modern tailoring.",
         },
         {
           image: "../src/assets/images/card image (7).png",
@@ -145,7 +171,8 @@ export default {
           image: "../src/assets/images/card image (8).png",
           title: "High-Waisted Tailored Cape Skirt",
           reviewText: "4.9 (124 reviews)",
-          description: "Knee-length skirt with a detachable cape, pleated detailing.",
+          description:
+            "Knee-length skirt with a detachable cape, pleated detailing.",
         },
       ],
     };
@@ -155,7 +182,9 @@ export default {
       return this.cards.filter(
         (card) =>
           card.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-          card.description.toLowerCase().includes(this.searchQuery.toLowerCase())
+          card.description
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()),
       );
     },
     displayedCards() {
@@ -170,7 +199,7 @@ export default {
     },
     searchGarment() {
       const foundGarment = this.cards.find(
-        (card) => card.title.toLowerCase() === this.searchQuery.toLowerCase()
+        (card) => card.title.toLowerCase() === this.searchQuery.toLowerCase(),
       );
       this.selectedGarment = foundGarment || null;
     },

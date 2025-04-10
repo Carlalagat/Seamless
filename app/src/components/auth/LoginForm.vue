@@ -5,12 +5,13 @@
         Log In to Your Account
       </h2>
       <form @submit.prevent="onSubmit" class="space-y-4">
-        
         <!-- Identifier Input -->
         <div>
-          <label for="identifier" class="block text-sm font-medium text-gray-700"
-            >Email or Username </label
-          >
+          <label
+            for="identifier"
+            class="block text-sm font-medium text-gray-700"
+            >Email or Username
+          </label>
           <input
             type="text"
             id="identifier"
@@ -18,7 +19,8 @@
             placeholder="Enter your email or username"
             :class="{
               'border-red-500': v$.identifier.$error,
-              'focus:ring-purple-500 focus:border-purple-500': !v$.identifier.$error,
+              'focus:ring-purple-500 focus:border-purple-500':
+                !v$.identifier.$error,
             }"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm outline-none sm:text-sm"
           />

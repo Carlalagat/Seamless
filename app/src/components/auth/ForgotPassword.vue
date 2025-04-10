@@ -80,7 +80,7 @@ const formData = reactive({
 });
 
 const rules = computed(() => ({
-  email: { required, email }
+  email: { required, email },
 }));
 
 const v$ = useVuelidate(rules, formData);
@@ -99,12 +99,15 @@ const handleForgotPassword = async () => {
 
   loading.value = true;
   try {
-    const response = await post("api/auth/forgot-password", { email: formData.email });
-    
+    const response = await post("api/auth/forgot-password", {
+      email: formData.email,
+    });
+
     // Use the auth store to manage notification
     authStore.showNotification = true;
-    authStore.notificationMessage = response.data.message || "Password reset link sent successfully!";
-    
+    authStore.notificationMessage =
+      response.data.message || "Password reset link sent successfully!";
+
     showSuccessPopup.value = true;
   } catch (err) {
     console.error("Forgot password error:", err);

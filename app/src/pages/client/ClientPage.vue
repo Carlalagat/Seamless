@@ -1,9 +1,7 @@
 <template>
-    <DashboardPage />
-    <OrdersPage />
-    <MeasurementPage />
+  <DashboardPage />
+  <OrdersPage />
+  <MeasurementPage />
 </template>
 
-<script>
-
-</script>
+<script></script>

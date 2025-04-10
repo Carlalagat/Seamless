@@ -1,8 +1,7 @@
 <template>
-    <Dashboard />
+  <Dashboard />
 </template>
 
 <script>
-import Dashboard from '../../components/client/Dashboard.vue';
-
+import Dashboard from "../../components/client/Dashboard.vue";
 </script>

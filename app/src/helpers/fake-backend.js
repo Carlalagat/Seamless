@@ -43,7 +43,7 @@ function fakeBackend() {
       function authenticate() {
         const { username, password } = body();
         const user = users.find(
-          (x) => x.username === username && x.password === password
+          (x) => x.username === username && x.password === password,
         );
 
         if (!user)

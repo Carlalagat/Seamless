@@ -2,7 +2,7 @@
   <div>
     <DashboardPage />
   </div>
-    <Dashboard />
+  <Dashboard />
 </template>
 
 <script setup>
