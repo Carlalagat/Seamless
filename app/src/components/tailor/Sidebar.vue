@@ -7,75 +7,74 @@
   <!-- Sidebar Overlay (Mobile) -->
   <div
     v-if="isOpen"
-    class="fixed inset-0 bg-black opacity-50 md:hidden"
+    class="fixed inset-0 bg-black opacity-50 md:hidden z-20"
     @click="toggleSidebar"
   ></div>
 
   <!-- Sidebar -->
   <aside
     :class="[
-      'bg-gray-200 h-screen p-6 shadow-lg fixed md:static transition-transform duration-300',
+      'bg-gray-200 fixed left-0 top-0 h-screen overflow-y-auto w-64 p-6 shadow-lg transition-transform duration-300 z-30',
       isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
     ]"
-    :style="{ height: isMobile && isOpen ? '' : '100vh' }"
   >
     <button
       @click="toggleSidebar"
       class="absolute top-4 right-4 md:hidden text-gray-600"
       aria-label="Close sidebar"
     >
-      <font-awesome-icon icon="times" class="text-2xl" />
+      <i class="fas fa-times text-2xl"></i>
     </button>
-    <RouterLink to="/client-dashboard" class="flex items-center space-x-2">
-      <img src="@/assets/logo.png" alt="SeamLess" class="w-40 center" />
+    <RouterLink to="/client-dashboard" class="flex items-center justify-center mb-2">
+      <img src="@/assets/logo.png" alt="SeamLess" class="w-40" />
     </RouterLink>
     <nav class="mt-8">
-      <ul>
+      <ul class="space-y-2">
         <li
           v-for="(item, index) in menuItems"
           :key="index"
-          class="flex items-center gap-2 p-3 rounded-lg cursor-pointer hover:text-purple-700 transition duration-500"
+          :class="[
+            'flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-purple-100 transition-all duration-300',
+            activeContent.name === item.name ? 'bg-purple-100 text-purple-700 font-medium' : 'text-gray-700'
+          ]"
           @click="setActiveContent(item.content)"
         >
-          <component :is="item.icon" />
-          {{ item.name }}
+          <i :class="[item.iconClass, 'w-5 text-center']"></i>
+          <span>{{ item.name }}</span>
         </li>
       </ul>
     </nav>
-    <div class="mt-12 border-t pt-4">
-      <div
-        class="flex items-center space-x-3 cursor-pointer hover:bg-gray-300 p-2 rounded-lg transition duration-200"
-        @click="navigateToProfile"
-      >
-        <div class="flex flex-col space-y-4">
-          <div
-            v-if="!user.profileImage"
-            class="rounded-full w-10 h-10 bg-gray-400 flex items-center justify-center text-white font-bold text-xl"
-          >
-            {{ userInitials }}
-          </div>
-          <img
-            v-else
-            :src="user.profileImage"
-            class="rounded-full w-10 h-10 object-cover"
-            :alt="user.username"
-          />
-          <h4 class="font-semibold">{{ user.username }}</h4>
-          <p class="text-xs text-gray-500">{{ user.email }}</p>
-          <button
-            @click.stop="logout"
-            class="text-white bg-red-600 shadow-lg p-2 space-x-2 rounded items-center justify-center flex font-bold hover:bg-red-700 transition duration-200"
-            id="logout"
-          >
-            <i class="fa fa-sign-out"></i>
-            <p>Logout</p>
-          </button>
+    <div class="mt-auto border-t pt-6 mt-8">
+      <div class="flex items-center p-3 rounded-lg mb-4 w-full">
+        <div
+          v-if="!authUser.profileImage"
+          class="rounded-full w-12 h-12 bg-purple-600 flex items-center justify-center text-white font-bold text-xl mr-3"
+        >
+          {{ userInitials }}
+        </div>
+        <img
+          v-else
+          :src="authUser.profileImage"
+          class="rounded-full w-12 h-12 object-cover mr-3"
+          :alt="authUser.username"
+        />
+        <div class="flex flex-col">
+          <h4 class="font-semibold text-gray-800">{{ authUser.username || 'User' }}</h4>
+          <p class="text-xs text-gray-500">{{ authUser.email || 'email@example.com' }}</p>
         </div>
       </div>
+      <button
+        @click="handleLogout"
+        class="w-full text-white bg-red-600 shadow-md p-3 rounded-lg items-center justify-center flex font-medium hover:bg-red-700 transition-all duration-300 gap-2"
+        id="logout"
+      >
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </button>
     </div>
   </aside>
   <div
-    class="w-full p-6"
+    class="md:pl-64 w-full"
     id="maincontent"
     v-show="activeContent.name !== 'Dashboard'"
   >
@@ -84,18 +83,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/store";
-import {
-  Home,
-  List,
-  MessageSquareIcon,
-  ShoppingCart,
-  Users,
-} from "lucide-vue-next";
 
-// Import new components
+// Import components
 import Customers from "./Customers.vue";
 import Orders from "./Orders.vue";
 import Products from "./Products.vue";
@@ -117,18 +109,21 @@ const toggleSidebar = () => {
   emit("toggleSidebar");
 };
 
-// Profile state
-const showProfile = ref(false);
-const user = computed(() => authStore.user);
+// Auth user from store
+const authUser = computed(() => authStore.user || {});
+
+// Get user initials for avatar
 const userInitials = computed(() => {
-  if (!user.value.username) return "";
-  return user.value.username
+  if (!authUser.value || !authUser.value.username) return "";
+  return authUser.value.username
     .split(" ")
     .map((name) => name[0])
     .join("")
     .toUpperCase();
 });
-const logout = () => {
+
+// Logout function
+const handleLogout = () => {
   authStore.logout();
 };
 
@@ -140,11 +135,11 @@ const navigateToProfile = () => {
   }
 };
 
-// Menu items with content linked to each section
+// Menu items with FontAwesome icons for better visibility
 const menuItems = [
   {
     name: "Dashboard",
-    icon: Home,
+    iconClass: "fas fa-home",
     content: {
       name: "Dashboard",
       component: { template: "<div>Dashboard Content</div>" },
@@ -153,7 +148,7 @@ const menuItems = [
   },
   {
     name: "Orders",
-    icon: ShoppingCart,
+    iconClass: "fas fa-shopping-cart",
     content: {
       name: "Orders",
       component: Orders,
@@ -163,7 +158,7 @@ const menuItems = [
   },
   {
     name: "Products",
-    icon: List,
+    iconClass: "fas fa-list",
     content: {
       name: "Products",
       component: Products,
@@ -173,7 +168,7 @@ const menuItems = [
   },
   {
     name: "Customers",
-    icon: Users,
+    iconClass: "fas fa-users",
     content: {
       name: "Customers",
       component: Customers,
@@ -183,12 +178,22 @@ const menuItems = [
   },
   {
     name: "Chats",
-    icon: MessageSquareIcon,
+    iconClass: "fas fa-comment-dots",
     content: {
       name: "Chats",
       component: Chats,
       title: "",
       content: "Manage Notifications.",
+    },
+  },
+  {
+    name: "Profile",
+    iconClass: "fas fa-user",
+    content: {
+      name: "Profile",
+      component: Profile,
+      title: "Your Profile",
+      content: "View and update your profile.",
     },
   },
 ];
@@ -213,57 +218,58 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Styling for sidebar links */
-.sidebar-link {
+/* Fixed sidebar style */
+aside {
+  height: 100vh;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #4a5568;
-  transition: color 0.2s;
-}
-
-.sidebar-link:hover {
-  color: #6b46c1;
-}
-
-.active {
-  color: #6b46c1;
-  font-weight: 600;
-}
-
-/* Profile section styling */
-.profile-content {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Logout button styling */
-#logout {
-  color: #f5f5f5;
-}
-
-#logout:hover {
-  transform: translateY(-3px);
-  color: #e0e0e0;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
   aside {
-    width: 75%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 50;
+    width: 250px;
   }
+}
+
+/* Active menu item animation */
+.active-item {
+  position: relative;
+}
+
+.active-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #8b5cf6;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Improved scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
 </style>
