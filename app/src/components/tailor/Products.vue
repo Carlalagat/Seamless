@@ -406,6 +406,8 @@ import { useAuthStore } from "@/store/modules/auth.store";
 
 // State variables
 const authStore = useAuthStore();
+// Create computed property for authUser like in Sidebar.vue
+const authUser = computed(() => authStore.user || {});
 const products = ref([]);
 const loading = ref(true);
 const searchQuery = ref("");
@@ -607,7 +609,7 @@ const editProduct = (product) => {
     description: product.description,
     price: product.price,
     location: product.location,
-    tailorName: authStore.user.value.username,
+    tailorName: authUser.value.username, // Fixed: use authUser.value
     fabricTypes: product.fabric?.fabricTypes?.map((ft) => ({
       name: ft.name,
     })) || [{ name: "" }],
@@ -638,8 +640,8 @@ const editProduct = (product) => {
 };
 
 const submitProduct = async () => {
-  // Check if user is logged in
-  if (!authStore.user.value) {
+  // Check if user is logged in - FIXED
+  if (!authUser.value || !authUser.value.id) {
     showNotification("error", "You must be logged in to manage products.");
     return;
   }
@@ -663,8 +665,8 @@ const submitProduct = async () => {
     return;
   }
 
-  // Set tailorName and user_id from auth store
-  formData.value.tailorName = authStore.user.value.username;
+  // Set tailorName from auth store - FIXED
+  formData.value.tailorName = authUser.value.username;
 
   submitting.value = true;
 
@@ -677,11 +679,11 @@ const submitProduct = async () => {
     productFormData.append("description", formData.value.description);
     productFormData.append("price", formData.value.price);
     productFormData.append("location", formData.value.location);
-    productFormData.append("tailorName", formData.value.tailorName); // Auto-set
+    productFormData.append("tailorName", formData.value.tailorName);
 
-    // Include user_id ONLY for create operation
+    // Include user_id ONLY for create operation - FIXED
     if (!editMode.value) {
-      productFormData.append("user_id", authStore.user.value.id);
+      productFormData.append("user_id", authUser.value.id);
     }
 
     // Add fabric types as JSON

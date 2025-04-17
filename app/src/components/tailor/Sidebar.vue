@@ -46,7 +46,7 @@
         </li>
       </ul>
     </nav>
-    <div class="mt-auto border-t pt-6 mt-8">
+    <div class="border-t pt-6 mt-8">
       <div class="flex items-center p-3 rounded-lg mb-4 w-full">
         <!-- Fixed-size avatar container with proper centering -->
         <div
