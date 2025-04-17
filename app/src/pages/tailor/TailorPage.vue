@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Dashboard />
+    <TailorLayout />
   </div>
 </template>
 
 <script setup>
-import Dashboard from "@/components/tailor/Dashboard.vue";
+import TailorLayout from "@/components/tailor/TailorLayout.vue";
 </script>
 
 <style lang="scss" scoped></style>

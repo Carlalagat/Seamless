@@ -1,16 +1,22 @@
 <template>
-  <div class="min-h-screen bg-gray-100 w-full">
-    <div class="flex flex-col w-full p-6">
+  <div class="flex-1 min-h-screen bg-gray-100 w-full">
+    <div class="p-4 sm:p-6 w-full">
       <!-- Header section with search and add button -->
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800">Manage Products</h1>
-        <div class="flex items-center gap-4">
-          <div class="relative">
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 w-full"
+      >
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">
+          Manage Products
+        </h1>
+        <div
+          class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+        >
+          <div class="relative w-full sm:w-64">
             <input
               v-model="searchQuery"
               type="text"
               placeholder="Search products..."
-              class="pl-10 pr-4 py-2 border border-purple-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              class="pl-10 pr-4 py-2 w-full border border-purple-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             />
             <div class="absolute left-3 top-2.5 text-gray-400">
               <i class="fas fa-search"></i>
@@ -18,7 +24,7 @@
           </div>
           <button
             @click="showAddProductForm = true"
-            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-300 flex items-center gap-2"
+            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-300 flex items-center gap-2 w-full sm:w-auto justify-center"
           >
             <i class="fas fa-plus"></i>
             <span>Add Product</span>
@@ -36,7 +42,7 @@
 
         <div
           v-else-if="filteredProducts.length === 0"
-          class="flex flex-col items-center justify-center h-64"
+          class="flex flex-col items-center justify-center h-64 bg-white rounded-lg shadow p-6"
         >
           <div class="text-gray-500 text-xl mb-4">No products found</div>
           <button
@@ -49,52 +55,52 @@
 
         <div
           v-else
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full"
         >
           <div
             v-for="product in filteredProducts"
             :key="product.id"
-            class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
+            class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
           >
-            <div class="relative h-64 overflow-hidden">
+            <div class="relative aspect-square overflow-hidden">
               <img
                 :src="getDisplayImage(product)"
                 :alt="product.productName"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
               <div class="absolute top-2 right-2">
                 <span
-                  class="bg-purple-600 text-white text-xs px-2 py-1 rounded-full"
+                  class="bg-purple-600 text-white text-xs px-3 py-1.5 rounded-full shadow-sm"
                 >
                   {{ formatPrice(product.price) }}
                 </span>
               </div>
             </div>
-            <div class="p-4">
-              <h2 class="text-xl font-bold text-gray-800 mb-1">
+            <div class="p-4 flex flex-col flex-1">
+              <h2 class="text-xl font-bold text-gray-800 mb-2">
                 {{ product.productName }}
               </h2>
-              <p class="text-sm text-gray-600 mb-2">
-                {{ truncateText(product.description, 80) }}
+              <p class="text-sm text-gray-600 mb-3 flex-1 line-clamp-3">
+                {{ product.description }}
               </p>
               <div class="flex items-center text-sm text-gray-500 mb-3">
-                <i class="fas fa-map-marker-alt mr-1"></i>
-                <span>{{ product.location }}</span>
-                <span class="mx-2">•</span>
-                <span>{{ product.tailorName }}</span>
+                <i class="fas fa-map-marker-alt mr-2 text-purple-500"></i>
+                <span class="truncate">{{ product.location }}</span>
               </div>
-              <div class="flex mt-4">
+              <div class="flex gap-2 mt-auto">
                 <button
                   @click="editProduct(product)"
-                  class="bg-purple-600 w-full p-2 mr-2 text-white rounded hover:bg-purple-400 hover:text-black transition duration-300 flex items-center justify-center"
+                  class="bg-purple-600 flex-1 p-2 text-white rounded-lg hover:bg-purple-500 transition duration-300 flex items-center justify-center gap-2"
                 >
-                  <i class="fas fa-edit mr-1"></i> Update
+                  <i class="fas fa-edit"></i>
+                  <span class="hidden sm:inline">Update</span>
                 </button>
                 <button
                   @click="confirmDelete(product)"
-                  class="bg-stone-600 w-full p-2 text-white rounded hover:bg-red-600 hover:text-white transition duration-300 flex items-center justify-center"
+                  class="bg-gray-600 flex-1 p-2 text-white rounded-lg hover:bg-red-600 transition duration-300 flex items-center justify-center gap-2"
                 >
-                  <i class="fas fa-trash-alt mr-1"></i> Delete
+                  <i class="fas fa-trash-alt"></i>
+                  <span class="hidden sm:inline">Delete</span>
                 </button>
               </div>
             </div>
@@ -105,7 +111,7 @@
       <!-- Add/Edit Product Form -->
       <div
         v-if="showAddProductForm"
-        class="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto"
+        class="bg-white rounded-lg shadow-lg p-6 max-w-6xl mx-auto"
       >
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-2xl font-bold text-gray-800">
@@ -137,17 +143,6 @@
                 step="0.01"
                 class="w-full p-3 border border-purple-300 rounded focus:ring focus:ring-purple-200 focus:border-purple-500"
                 placeholder="Enter price"
-                required
-              />
-            </div>
-
-            <div>
-              <label class="block text-gray-700 mb-2">Tailor Name</label>
-              <input
-                v-model="formData.tailorName"
-                type="text"
-                class="w-full p-3 border border-purple-300 rounded focus:ring focus:ring-purple-200 focus:border-purple-500"
-                placeholder="Enter tailor name"
                 required
               />
             </div>
@@ -407,8 +402,10 @@
 <script setup>
 import { ref, computed, onMounted, watch } from "vue";
 import { post, get, patch, deleteItem } from "../../providers/api/main";
+import { useAuthStore } from "@/store/modules/auth.store";
 
 // State variables
+const authStore = useAuthStore();
 const products = ref([]);
 const loading = ref(true);
 const searchQuery = ref("");
@@ -610,7 +607,7 @@ const editProduct = (product) => {
     description: product.description,
     price: product.price,
     location: product.location,
-    tailorName: product.tailorName,
+    tailorName: authStore.user.value.username,
     fabricTypes: product.fabric?.fabricTypes?.map((ft) => ({
       name: ft.name,
     })) || [{ name: "" }],
@@ -641,6 +638,12 @@ const editProduct = (product) => {
 };
 
 const submitProduct = async () => {
+  // Check if user is logged in
+  if (!authStore.user.value) {
+    showNotification("error", "You must be logged in to manage products.");
+    return;
+  }
+
   // Validate form inputs
   if (
     !formData.value.productName ||
@@ -660,6 +663,9 @@ const submitProduct = async () => {
     return;
   }
 
+  // Set tailorName and user_id from auth store
+  formData.value.tailorName = authStore.user.value.username;
+
   submitting.value = true;
 
   try {
@@ -671,7 +677,12 @@ const submitProduct = async () => {
     productFormData.append("description", formData.value.description);
     productFormData.append("price", formData.value.price);
     productFormData.append("location", formData.value.location);
-    productFormData.append("tailorName", formData.value.tailorName);
+    productFormData.append("tailorName", formData.value.tailorName); // Auto-set
+
+    // Include user_id ONLY for create operation
+    if (!editMode.value) {
+      productFormData.append("user_id", authStore.user.value.id);
+    }
 
     // Add fabric types as JSON
     productFormData.append("fabricTypes", JSON.stringify(validFabricTypes));
@@ -771,16 +782,6 @@ const hideNotification = () => {
 </script>
 
 <style scoped>
-/* Smooth transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 /* Fix for file input styling */
 input[type="file"] {
   display: none;
@@ -791,7 +792,26 @@ button {
   transition: all 0.2s ease-in-out;
 }
 
-.hover-scale:hover {
-  transform: scale(1.05);
+/* Improved card transitions */
+.aspect-square {
+  aspect-ratio: 1/1;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Smoother image scaling */
+img {
+  transition: transform 0.3s ease-in-out;
 }
 </style>
