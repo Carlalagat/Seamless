@@ -98,7 +98,7 @@
             </RouterLink>
           </li>
         </template>
-        <template v-else>
+        <!-- <template v-else>
           <li class="flex items-center justify-between">
             <span>{{ userDisplayName }}</span>
             <button
@@ -108,7 +108,7 @@
               Logout
             </button>
           </li>
-        </template>
+        </template> -->
       </ul>
     </div>
   </nav>

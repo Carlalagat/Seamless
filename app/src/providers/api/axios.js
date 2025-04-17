@@ -1,11 +1,7 @@
 import axios from "axios";
-import { useLocalStorage } from "@vueuse/core";
 
 /** Import API URL from .env */
 const ROOT_URL = `${import.meta.env.VITE_API_URL}`;
-
-/** Capture the access token from local storage */
-const access_token = useLocalStorage("x-token", null);
 
 /** Create an axios instance */
 const axiosInstance = axios.create({
@@ -14,14 +10,18 @@ const axiosInstance = axios.create({
 
 /** Create a request interceptor */
 axiosInstance.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    // Dynamically import the auth store to get the current token
+    const { useAuthStore } = await import("../../store/modules/auth.store");
+    const authStore = useAuthStore();
+
     // Add token to header if it exists
-    if (access_token.value) {
-      config.headers["Authorization"] = `Bearer ${access_token.value}`;
+    if (authStore.access_token) {
+      config.headers["Authorization"] = `Bearer ${authStore.access_token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 /** Handle Forbidden and Unauthorized errors with refresh token handling */
@@ -56,12 +56,11 @@ axiosInstance.interceptors.response.use(
           "/api/auth/refresh-token",
           {
             refreshToken: authStore.refreshToken,
-          },
+          }
         );
 
-        /** Update tokens in both the store and local storage */
+        /** Update tokens in the store */
         authStore.access_token = refreshResponse.data.token;
-        access_token.value = refreshResponse.data.token;
 
         /** Update the authorization header and retry the original request */
         originalRequest.headers["Authorization"] =
@@ -85,9 +84,12 @@ axiosInstance.interceptors.response.use(
     }
     if (error.response.status === 403) {
       console.log("Access forbidden. Logging out...");
+      const { useAuthStore } = await import("../../store/modules/auth.store");
+      const authStore = useAuthStore();
+      authStore.logout();
     }
     return Promise.reject(error);
-  },
+  }
 );
 
 export default axiosInstance;

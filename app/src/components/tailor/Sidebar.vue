@@ -25,17 +25,19 @@
     >
       <i class="fas fa-times text-2xl"></i>
     </button>
-    <RouterLink to="/client-dashboard" class="flex items-center justify-center mb-2">
+    <RouterLink to="/" class="flex items-center justify-center">
       <img src="@/assets/logo.png" alt="SeamLess" class="w-40" />
     </RouterLink>
-    <nav class="mt-8">
+    <nav class="mt-4">
       <ul class="space-y-2">
         <li
           v-for="(item, index) in menuItems"
           :key="index"
           :class="[
             'flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-purple-100 transition-all duration-300',
-            activeContent.name === item.name ? 'bg-purple-100 text-purple-700 font-medium' : 'text-gray-700'
+            activeContent && activeContent.name === item.name
+              ? 'bg-purple-100 text-purple-700 font-medium active-item'
+              : 'text-gray-700',
           ]"
           @click="setActiveContent(item.content)"
         >
@@ -44,23 +46,28 @@
         </li>
       </ul>
     </nav>
-    <div class="mt-auto border-t pt-6 mt-8">
+    <div class="border-t pt-6 mt-8">
       <div class="flex items-center p-3 rounded-lg mb-4 w-full">
+        <!-- Fixed-size avatar container with proper centering -->
         <div
           v-if="!authUser.profileImage"
-          class="rounded-full w-12 h-12 bg-purple-600 flex items-center justify-center text-white font-bold text-xl mr-3"
+          class="rounded-full w-12 h-12 min-w-[3rem] bg-purple-600 flex items-center justify-center text-white font-bold text-xl mr-3 overflow-hidden"
         >
           {{ userInitials }}
         </div>
         <img
           v-else
           :src="authUser.profileImage"
-          class="rounded-full w-12 h-12 object-cover mr-3"
-          :alt="authUser.username"
+          class="rounded-full w-12 h-12 min-w-[3rem] object-cover mr-3"
+          :alt="authUser.username || 'User'"
         />
-        <div class="flex flex-col">
-          <h4 class="font-semibold text-gray-800">{{ authUser.username || 'User' }}</h4>
-          <p class="text-xs text-gray-500">{{ authUser.email || 'email@example.com' }}</p>
+        <div class="flex flex-col overflow-hidden">
+          <h4 class="font-semibold text-gray-800 truncate">
+            {{ authUser.username || "User" }}
+          </h4>
+          <p class="text-xs text-gray-500 truncate">
+            {{ authUser.email || "email@example.com" }}
+          </p>
         </div>
       </div>
       <button
@@ -73,13 +80,6 @@
       </button>
     </div>
   </aside>
-  <div
-    class="md:pl-64 w-full"
-    id="maincontent"
-    v-show="activeContent.name !== 'Dashboard'"
-  >
-    <component :is="activeContent.component" />
-  </div>
 </template>
 
 <script setup>
@@ -88,6 +88,7 @@ import { useRouter } from "vue-router";
 import { useAuthStore } from "@/store";
 
 // Import components
+import Dashboard from "./Dashboard.vue";
 import Customers from "./Customers.vue";
 import Orders from "./Orders.vue";
 import Products from "./Products.vue";
@@ -109,14 +110,15 @@ const toggleSidebar = () => {
   emit("toggleSidebar");
 };
 
-// Auth user from store
+// Auth user from store with default values
 const authUser = computed(() => authStore.user || {});
 
-// Get user initials for avatar
+// Get user initials for avatar - limit to max 2 characters
 const userInitials = computed(() => {
   if (!authUser.value || !authUser.value.username) return "";
   return authUser.value.username
     .split(" ")
+    .slice(0, 2) // Take only first two words
     .map((name) => name[0])
     .join("")
     .toUpperCase();
@@ -125,14 +127,7 @@ const userInitials = computed(() => {
 // Logout function
 const handleLogout = () => {
   authStore.logout();
-};
-
-// Profile navigation
-const navigateToProfile = () => {
-  setActiveContent({ name: "Profile", component: Profile });
-  if (isMobile.value) {
-    toggleSidebar();
-  }
+  router.push("/login");
 };
 
 // Menu items with FontAwesome icons for better visibility
@@ -142,8 +137,8 @@ const menuItems = [
     iconClass: "fas fa-home",
     content: {
       name: "Dashboard",
-      component: { template: "<div>Dashboard Content</div>" },
-      content: "Social Media Feed, Promotions, and Legal/Compliance",
+      component: Dashboard,
+      title: "Dashboard",
     },
   },
   {
@@ -153,7 +148,6 @@ const menuItems = [
       name: "Orders",
       component: Orders,
       title: "Your Orders",
-      content: "Here are your orders and details.",
     },
   },
   {
@@ -162,8 +156,7 @@ const menuItems = [
     content: {
       name: "Products",
       component: Products,
-      title: "",
-      content: "Add and update products.",
+      title: "Products",
     },
   },
   {
@@ -173,7 +166,6 @@ const menuItems = [
       name: "Customers",
       component: Customers,
       title: "Customer Insights",
-      content: "Manage and view customer data.",
     },
   },
   {
@@ -182,8 +174,7 @@ const menuItems = [
     content: {
       name: "Chats",
       component: Chats,
-      title: "",
-      content: "Manage Notifications.",
+      title: "Chats",
     },
   },
   {
@@ -193,12 +184,11 @@ const menuItems = [
       name: "Profile",
       component: Profile,
       title: "Your Profile",
-      content: "View and update your profile.",
     },
   },
 ];
 
-// set active content and handle sidebar toggle for mobile view
+// Set active content and handle sidebar toggle for mobile view
 const setActiveContent = (content) => {
   emit("update:activeContent", content);
   if (isMobile.value) {
@@ -211,7 +201,11 @@ const isMobile = ref(window.innerWidth <= 768);
 const updateIsMobile = () => {
   isMobile.value = window.innerWidth <= 768;
 };
-window.addEventListener("resize", updateIsMobile);
+
+onMounted(() => {
+  window.addEventListener("resize", updateIsMobile);
+});
+
 onUnmounted(() => {
   window.removeEventListener("resize", updateIsMobile);
 });
