@@ -25,10 +25,10 @@
     >
       <i class="fas fa-times text-2xl"></i>
     </button>
-    <RouterLink to="/" class="flex items-center justify-center mb-2">
+    <RouterLink to="/" class="flex items-center justify-center">
       <img src="@/assets/logo.png" alt="SeamLess" class="w-40" />
     </RouterLink>
-    <nav class="mt-8">
+    <nav class="mt-4">
       <ul class="space-y-2">
         <li
           v-for="(item, index) in menuItems"
