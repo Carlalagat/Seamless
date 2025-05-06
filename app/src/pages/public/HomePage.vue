@@ -214,21 +214,39 @@ export default {
       tailors: [
         {
           image: "../src/assets/images/tailor a.webp",
-          name: "James Michael",
-          reviewText: "4.9 (126 reviews)",
-          description: "Specialized in custom and formal suits.",
+  name: "James Michael",
+  reviewText: "4.9 (126 reviews)",
+  description: "Specialized in custom and formal suits.",
+  Descriptions: "Renowned tailor specializing in high-end custom and formal suits for men and women.",
+  specialties: ["Custom Suits","Formal Wear","Wedding Attire","Traditional African Wear","Bespoke Shirts"],
+  experience: "15+ years of tailoring excellence, including celebrity clientele and bridal couture.",
+  location: "Westlands, Nairobi, Kenya",
+  certifications: "Certified Bespoke Tailor Member of the Kenya Tailors Association",
+  availability: "Monday to Saturday, 9:00 AM – 6:00 PM"
         },
         {
           image: "../src/assets/images/tailor b.avif",
-          name: "Benson Ogola",
-          reviewText: "4.9 (124 reviews)",
-          description: "Specializing in bespoke suits and formal wear.",
+    name: "Benson Ogola",
+    reviewText: "4.9 (124 reviews)",
+    description: "Specializing in bespoke suits and formal wear.",
+    Descriptions: "Expert in crafting high-quality bespoke suits with a flair for modern design.",
+    specialties: ["Bespoke Suits", "Alterations", "Custom Shirts", "Business Attire"],
+    experience: "12 years of dedicated craftsmanship",
+    location: "Ngong Road, Nairobi, Kenya",
+    certifications: "Kenya Fashion Council Member",
+    availability: "Mon - Sat, 9:00 AM – 6:00 PM"
         },
         {
           image: "../src/assets/images/tailor c.jpg",
-          name: "Ezelda Nkosi",
-          reviewText: "4.9 (124 reviews)",
-          description: "Specializing in bespoke suits and custom wear.",
+    name: "Ezelda Nkosi",
+    reviewText: "4.9 (124 reviews)",
+    description: "Specializing in bespoke suits and custom wear.",
+    Descriptions: "Blending modern fashion with rich cultural influence for unique custom wear.",
+    specialties: ["Custom Wear", "Traditional Attire", "Modern Fashion", "Cultural Designs"],
+    experience: "10 years",
+    location: "Kisumu City Center, Kenya",
+    certifications: "Kenya Fashion Institute Graduate",
+    availability: "Tues - Sun, 10:00 AM – 5:00 PM"
         },
       ],
       steps: [
